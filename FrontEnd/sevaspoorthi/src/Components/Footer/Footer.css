@@ -1,0 +1,84 @@
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #025f56;
+    color: #ffffff;
+    overflow: hidden;
+    border-radius: 2.5%;
+}
+
+/* Social media links section */
+.footer-socialmedialinks{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 2rem;
+    padding: 0.5rem 0.5rem;
+    /* background-color: #038477; */
+    background-color: white;
+}
+
+.social-links a{
+    font-size: 2rem;
+    margin: 0 0.5rem;
+}
+
+/* Footer body section*/
+.footer-body{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    column-gap: 0.5rem;
+    margin: 1rem;
+}
+
+.about-us img{
+    float: left;
+}
+/* CopyRight section */
+.footer-copyright{
+    height: 2rem;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: white;
+    background-color: #01403a
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 800px){
+    .footer-body {
+        display: grid;
+        grid-template-columns: repeat(1,auto);
+        row-gap: 0.5rem;
+        margin: 1rem;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1023px){
+    .footer-body {
+        display: grid;
+        grid-template-columns: repeat(3,auto);
+        gap: 0.5rem 0.5rem;
+        margin: 1rem;
+    }
+
+    .footer-body div:nth-last-child(1) {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* Social media icons */
+.youtube-social {
+    color: #FF0000;
+}
+
+.facebook-social {
+    color: #4267B2
+}
+
+.twitter-social {
+    color: #1DA1F2
+}
