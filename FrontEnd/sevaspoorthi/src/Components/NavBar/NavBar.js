@@ -1,62 +1,68 @@
-import React, { useState } from 'react'
-import './NavBar.css'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useState,useEffect } from 'react'
+import { menuItems } from './menuItem';
+import MenuItems from './MenuItems';
 import logo from "./logo.png"
-import sideMenuBar from "./sideMenuBar.svg"
-import cross from "./cross.svg"
+import './NavBar.css'
+
+
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+
 
 function NavBar() {
-    const handle=(events)=>{
-        console.log(events.target.value)
-        return
-    }
+
     const menu=()=>{
         if(menuBar){
             document.getElementsByClassName("side-menubar")[0].style.cssText='display:none';
             document.getElementsByClassName("nav-list")[0].style.cssText='display:flex';
         }
         else{
-            document.getElementsByClassName("nav-list")[0].style.cssText='display:none';
-            document.getElementsByClassName("side-menubar")[0].style.cssText='display:flex';
+            document.getElementsByClassName("nav-list")[0].removeAttribute('style');
+            document.getElementsByClassName("side-menubar")[0].removeAttribute('style');
         }
         setMenuBar(!menuBar);
         console.log(menuBar);
         return
     }
     const [menuBar,setMenuBar]=useState(true);
+
+    const myFunction=()=> {
+        var navbar = document.getElementsByClassName("navbar")[0];
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky")
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+
+    useEffect(() => {
+        window.addEventListener('scroll', myFunction);
+    
+        return () => window.removeEventListener('scroll', myFunction);
+    
+      }, [myFunction]);
+    
   return (
     <div>
-        <div className='top-navbar'>
-            Select Language
-        </div>
         <nav className='navbar'>
             <div>
                 <img src={logo} className='logo' alt='SevaSpoorthi'/>
             </div>
 
-            <button id='side-menubar' onClick={menu} className='side-menubar'>
-                <img src={sideMenuBar}/>
+            <button onClick={menu} className='side-menubar'>
+                <FontAwesomeIcon icon={faBars} className='menu-button'/>
             </button>
 
             <div className='nav-list'>
-                <button id='side-menubar-cross' onClick={menu} className='side-menubar-cross'>
-                    <img src={cross}/>
+                <button onClick={menu} className='side-menubar-cross'>
+                <FontAwesomeIcon icon={faXmark} className='menu-button' />
                 </button>
                 <div className='nav-div'>
-                    <div className='nav-item'>
-                        <a href='#'>Home</a>
-                    </div>
-                    <div className='nav-item'>
-                        <a href='#'>About</a>
-                    </div>
-                    <div className='nav-item'>
-                        <a href='#'>Villages</a>
-                    </div>
-                    <div className='nav-item'>
-                        <a href='#'>Donate</a>
-                    </div>
-                    <div className='nav-item'>
-                        <a href='#' >Register</a>
-                    </div>
+                    {menuItems.map((menu, index) => {
+                        return <MenuItems items={menu} key={index} />;
+                    })}
                 </div>
             </div>
             
