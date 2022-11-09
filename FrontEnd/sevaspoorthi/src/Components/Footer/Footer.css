@@ -48,6 +48,8 @@
 }
 
 /* Media queries for responsive design */
+
+/* Mobile */
 @media screen and (max-width: 800px){
     .footer-body {
         display: grid;
@@ -57,7 +59,8 @@
     }
 }
 
-@media screen and (min-width: 801px) and (max-width: 1023px){
+/* Tablet */
+@media screen and (min-width: 800px) and (max-width: 1024px){
     .footer-body {
         display: grid;
         grid-template-columns: repeat(3,auto);
