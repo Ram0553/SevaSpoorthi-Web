@@ -1,0 +1,195 @@
+button{
+    text-decoration: none;
+    background-color: #025F56;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    margin: 0px;
+    cursor: pointer;
+}
+.navbar{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    vertical-align: middle;
+    justify-content:space-between;
+    font-size: 1.3vw;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.navbar .side-menubar{
+    display:none;
+}
+.navbar .side-menubar-cross{
+    display:none;
+}
+
+.navbar .logo{
+    margin: 0px;
+    padding: 10px;
+    padding-left: 25px;
+    cursor: pointer;
+    width: 12vw;
+}
+.navbar .nav-list{
+    display: flex;
+    overflow: hidden;
+}
+.navbar .nav-list .nav-div{
+    padding-right: 40px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-top: 3.5vw;
+    overflow: hidden;
+}
+.navbar .nav-list .nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+button:focus{
+    background-color: #00b19f;
+    transition: 200ms;
+}
+
+.dropdown{
+    display: none;
+    margin: 0px;
+    padding: 15px;
+    position:absolute;
+    font-size: 1vw;
+}
+
+.nav-items:hover .dropdown{
+    display: block;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 5px 2px rgb(234, 234, 234);
+}
+.sticky  {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #2fd2bc;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
+    overflow: hidden;
+}
+.sticky .nav-items:hover .dropdown{
+    background-color: #2fd2bc;
+    box-shadow: 2px 2px 5px 2px rgb(196, 196, 196);
+}
+
+@media screen and (max-width:800px) {
+    .navbar{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        font-size: 2.5vw;
+        height: min-content;
+        overflow: hidden;
+    }
+
+    .navbar .logo{
+        /* padding-top:10%; */
+        width:20vw
+    }
+    .navbar .nav-list .side-menubar-cross{
+        display: flex;
+        margin: 0px;
+        margin-top: 10px;
+        margin-right: 10px;
+        height: fit-content;
+        width: fit-content;
+        border-radius: 50%;
+    }
+    .navbar .side-menubar{
+        display: flex;
+        margin: 0px;
+        margin-top: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        height: fit-content;
+        width: fit-content;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    .navbar .nav-list{
+        display: none;
+        justify-content: right;
+        align-items:flex-end;
+        flex-direction: column;
+        width: 45%;
+        height: 100vh;
+        margin: 0px;
+        padding: 0px;
+        background-color:#00b19f;
+        font-weight: 500;
+    }
+    .navbar .nav-list .nav-div{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        row-gap: 20px;
+        padding: 10%;
+        margin: 0px;
+        margin-top: 20px;
+        
+    }
+    .navbar .nav-list .nav-div .nav-item{
+        display: flex;
+        justify-content: left;
+    }
+    a{
+        text-decoration: none;
+        color: rgb(240, 240, 240);
+        display: block;
+    }
+    button:focus{
+        background-color: #025F56;
+        transition: 200ms;
+    }
+    .nav-items:hover .dropdown{
+        position: relative;
+        background-color: #00b19f00;
+        font-size: 2vw;
+        box-shadow: 2px 2px 5px 2px rgba(196, 196, 196, 0);
+    }
+    .sticky .nav-items:hover .dropdown{
+        background-color: #2fd2bc00;
+        box-shadow: 2px 2px 5px 2px rgba(196, 196, 196, 0);
+    }
+}
+
+@media screen and (max-width:500px) {
+    .navbar{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        font-size: 3.5vw;
+        overflow: hidden;
+    }
+    .navbar .logo{
+        /* padding-top:10%; */
+        width:25vw
+    }
+    .nav-items:hover .dropdown{
+        font-size: 3vw;
+        box-shadow: 2px 2px 5px 2px rgba(196, 196, 196, 0);
+    }
+    .sticky .nav-items:hover .dropdown{
+        background-color: #2fd2bc00;
+        box-shadow: 2px 2px 5px 2px rgba(196, 196, 196, 0);
+    }
+}
