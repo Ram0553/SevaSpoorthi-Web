@@ -1,11 +1,12 @@
 import './App.css';
+import Footer from './Components/Footer/Footer';
 import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
-    <>
+    <div>
   <NavBar/>
-  <div>
+  <div className='main'>
   Lorem Ipsum
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
@@ -54,7 +55,8 @@ Integer dapibus blandit convallis. Vivamus ut elit eu massa blandit volutpat nec
 
 Generated 10 paragraphs, 751 words, 5033 bytes of Lorem Ipsum
   </div>
-  </>
+  <Footer/>
+  </div>
   );
 }
 

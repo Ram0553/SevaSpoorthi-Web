@@ -16,8 +16,8 @@ button{
     vertical-align: middle;
     justify-content:space-between;
     font-size: 1.3vw;
-    height: fit-content;
-    overflow: hidden;
+    position: relative;
+    z-index: 50;
 }
 
 .navbar .side-menubar{
@@ -82,7 +82,6 @@ button:focus{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
-    overflow: hidden;
 }
 .sticky .nav-items:hover .dropdown{
     background-color: #2fd2bc;
@@ -95,12 +94,10 @@ button:focus{
         padding: 0px;
         display: flex;
         font-size: 2.5vw;
-        height: min-content;
-        overflow: hidden;
+        height: 12vh;
     }
 
     .navbar .logo{
-        /* padding-top:10%; */
         width:20vw
     }
     .navbar .nav-list .side-menubar-cross{
@@ -178,7 +175,7 @@ button:focus{
         padding: 0px;
         display: flex;
         font-size: 3.5vw;
-        overflow: hidden;
+        height: 8vh;
     }
     .navbar .logo{
         /* padding-top:10%; */
