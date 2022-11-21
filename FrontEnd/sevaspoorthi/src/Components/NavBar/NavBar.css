@@ -1,4 +1,4 @@
-button{
+.navbar button{
     text-decoration: none;
     background-color: #025F56;
     border: none;
@@ -51,12 +51,13 @@ button{
     justify-content: center;
     align-items: center;
 }
-a{
-    text-decoration: none;
+.navbar a{
+    text-decoration:none;
     color: black;
+    font-weight:400;
 }
 
-button:focus{
+.navbar button:focus{
     background-color: #00b19f;
     transition: 200ms;
 }
@@ -78,14 +79,18 @@ button:focus{
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #2fd2bc;
+    background-color: #025f56;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
 }
 .sticky .nav-items:hover .dropdown{
-    background-color: #2fd2bc;
+    background-color: #025f56;
     box-shadow: 2px 2px 5px 2px rgb(196, 196, 196);
+}
+.sticky a{
+    color: white;
+    font-weight: 300;
 }
 
 @media screen and (max-width:800px) {
@@ -94,7 +99,7 @@ button:focus{
         padding: 0px;
         display: flex;
         font-size: 2.5vw;
-        height: 12vh;
+        /* height: 12vh; */
     }
 
     .navbar .logo{
@@ -148,7 +153,7 @@ button:focus{
         display: flex;
         justify-content: left;
     }
-    a{
+    .navbar a{
         text-decoration: none;
         color: rgb(240, 240, 240);
         display: block;
@@ -175,7 +180,7 @@ button:focus{
         padding: 0px;
         display: flex;
         font-size: 3.5vw;
-        height: 8vh;
+        /* height: 8vh; */
     }
     .navbar .logo{
         /* padding-top:10%; */

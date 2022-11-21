@@ -26,6 +26,8 @@ function NavBar() {
         console.log(menuBar);
         return
     }
+
+    
     const [menuBar,setMenuBar]=useState(true);
 
     const myFunction=()=> {

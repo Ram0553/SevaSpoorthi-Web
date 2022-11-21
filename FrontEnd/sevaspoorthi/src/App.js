@@ -1,11 +1,13 @@
 import './App.css';
+import Auth from './Components/Authentication/Auth';
 import Footer from './Components/Footer/Footer';
 import NavBar from './Components/NavBar/NavBar';
 
 function App() {
   return (
     <div>
-  <NavBar/>
+      <Auth/>
+      <NavBar/>
   <div className='main'>
   Lorem Ipsum
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."

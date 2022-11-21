@@ -1,3 +1,6 @@
+const auth=()=>{
+  document.getElementsByClassName("auth")[0].style.cssText='display:flex';
+}
 export const menuItems = [
     {
         title: 'Home',
@@ -34,6 +37,7 @@ export const menuItems = [
       {
         title: 'SignUp/Login',
         url: '#',
+        onClick:auth
         
       },    
   ];
