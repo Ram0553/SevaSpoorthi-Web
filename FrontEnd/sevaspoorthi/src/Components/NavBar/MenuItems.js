@@ -13,7 +13,7 @@ function MenuItems({ items })  {
             
         ) : (
             <div className="nav-items">
-            <a href={items.url}>{items.title}</a>
+            <a href={items.url} onClick={items.onClick}>{items.title}</a>
             </div>
         )}
         </div>
