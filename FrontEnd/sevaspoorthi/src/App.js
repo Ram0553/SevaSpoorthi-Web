@@ -1,6 +1,7 @@
 import './App.css';
 import Auth from './Components/Authentication/Auth';
 import Footer from './Components/Footer/Footer';
+import Gallery from './Components/Gallery/Gallery';
 import NavBar from './Components/NavBar/NavBar';
 import Welcome from './Components/Welcome/Welcome';
 
@@ -10,6 +11,7 @@ function App() {
       <Auth/>
       <NavBar/>
       <Welcome/>
+      <Gallery/>
   <div className='main'>
   Lorem Ipsum
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
