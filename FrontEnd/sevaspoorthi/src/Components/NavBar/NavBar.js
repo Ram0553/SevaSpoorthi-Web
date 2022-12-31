@@ -49,8 +49,12 @@ function NavBar() {
   return (
     <div>
         <nav className='navbar'>
-            <div>
-                <img src={logo} className='logo' alt='SevaSpoorthi'/>
+            <div className='logo'>
+                <img src={logo} className='logo-img' alt='SevaSpoorthi'/>
+                <div className='logo-name'>
+                    <h3>Seva</h3>
+                    <h3>Spoorthi</h3>
+                </div>
             </div>
 
             <button onClick={menu} className='side-menubar'>

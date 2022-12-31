@@ -28,23 +28,48 @@
 }
 
 .navbar .logo{
+    display: flex;
+    flex-direction: row;
     margin: 0px;
-    padding: 10px;
-    padding-left: 25px;
+    padding: 0px;
+}
+.navbar .logo-img{
+    margin: 0px;
+    padding: 1vw;
+    padding-left: 1vw;
     cursor: pointer;
-    width: 12vw;
+    width: 5vw;
+}
+
+.navbar .logo-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar .logo-name h3{
+    font-family:sans-serif;
+    font-weight: 600;
+    color: #025f56;
+    margin: 0px;
+    padding: 0px;
 }
 .navbar .nav-list{
     display: flex;
     overflow: hidden;
+    align-items: center;
 }
 .navbar .nav-list .nav-div{
     padding-right: 40px;
     display: flex;
     flex-direction: row;
     column-gap: 50px;
-    margin-top: 3.5vw;
+    margin: auto;
     overflow: hidden;
+    
 }
 .navbar .nav-list .nav-item{
     display: flex;
@@ -79,10 +104,15 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #025f56;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    background-color: #025f56cb;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
     box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
+}
+
+.sticky .logo-name h3{
+    color: white;
+    font-weight: 400;
 }
 .sticky .nav-items:hover .dropdown{
     background-color: #025f56;
@@ -102,8 +132,8 @@
         /* height: 12vh; */
     }
 
-    .navbar .logo{
-        width:20vw
+    .navbar .logo-img{
+        width:10vw
     }
     .navbar .nav-list .side-menubar-cross{
         display: flex;
@@ -182,9 +212,9 @@
         font-size: 3.5vw;
         /* height: 8vh; */
     }
-    .navbar .logo{
+    .navbar .logo-img{
         /* padding-top:10%; */
-        width:25vw
+        width:13vw
     }
     .nav-items:hover .dropdown{
         font-size: 3vw;
