@@ -5,7 +5,8 @@
     background-color: #025f56;
     color: #ffffff;
     overflow: hidden;
-    border-radius: 2.5%;
+    border-bottom-left-radius: 2.5%;
+    border-bottom-right-radius: 2.5%;
 }
 
 /* Social media links section */
