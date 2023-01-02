@@ -1,0 +1,165 @@
+.auth{
+    background-color: rgba(226, 226, 226, 0.316);
+    height:100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    align-items: center;
+}
+.auth-box{
+    width: 400px;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+}
+.cross{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.font-awesome-cross{
+    color: gray;
+}
+
+.font-awesome-cross:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.radio-button{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+    justify-content:space-evenly;
+    padding-top: 20px;
+    font-size: 1rem;
+    /* padding-bottom: 20px; */
+}
+
+.login-radio-button{
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+    color:  #025F56;
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-left: 1px solid;
+    border-color: rgb(213, 213, 213);
+    border-top: 3px solid #025F56;
+}
+
+.register-radio-button{
+    cursor: pointer;
+    width: 50%;
+    text-align: center;
+    font-weight: 500;
+    background-color: rgb(213, 213, 213);
+    padding: 10px;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: rgb(213, 213, 213);
+    padding: 10px;
+}
+
+.register-form{
+    display: none;
+    flex-direction: column;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: rgb(213, 213, 213);
+    padding: 10px;
+}
+
+
+.input{
+    padding: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-color: aliceblue;
+    font-size: 1rem;
+}
+
+.auth button{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #025F56;
+    color: white;
+    cursor: pointer;
+}
+.auth .submit{
+    margin: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.auth p{
+    font-size: small;
+    margin-right: 20px;
+    color: rgb(148, 148, 148);
+    text-align: right;
+    font-weight: 500;
+}
+
+.auth .google-login{
+    background-color: rgb(197, 61, 61);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.other-login{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: rgb(213, 213, 213);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    translate: 0px -4px;
+}
+
+.auth .font-awesome-google{
+    color: white;
+    padding: 5px;
+}
+.auth p:hover{
+    cursor: pointer;
+    color: rgb(92, 92, 92);
+}
+
+.separation{
+    font-weight: 600;
+    font-size: 12px;
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    line-height: .1em;
+    border-bottom: 1px solid #979faf;
+}
+
+span{
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: rgb(148, 148, 148);
+}
