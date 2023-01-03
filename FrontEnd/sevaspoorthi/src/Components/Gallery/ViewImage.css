@@ -1,0 +1,110 @@
+.viewImage{
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    height: 65vh;
+    width: 60vw;
+    background-color: rgb(0, 0, 0);
+    justify-content:space-between;
+    align-items: flex-end;
+    margin: auto;
+}
+
+.viewImage img{
+    max-height: 55vh;
+    max-width: 50vw;
+}
+
+.viewImage .image{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+    height: 65vh;
+    position: relative;
+    top:-2.25vw
+}
+
+.viewImage .fontawesome{
+    color: white;
+    height: 8vw;
+    width: 2.5vw;
+    margin: 1vw;
+}
+
+.viewImage .fontawesome:hover{
+    cursor: pointer;
+}
+
+.viewImage .fontawesome-cross{
+    color: white;
+    height: 2.5vw;
+    width: 2.5vw;
+    margin: 1vw;
+    display: block;
+    justify-items: right;
+    position: relative;
+    z-index: 1;
+
+}
+
+.viewImage .fontawesome-cross:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width:850px) {
+    .viewImage{
+        height: 45vh;
+        width: 70vw;
+        flex-direction: column;
+        z-index: 1000;
+        justify-content:space-between;
+        align-items: flex-end;
+        margin: auto;
+    }
+    .viewImage img{
+        max-height: 40vh;
+        max-width: 60vw;
+    }
+    
+    .viewImage .image{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 70vw;
+        height: 45vh;
+        position: relative;
+        top:-2.25vw
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    .viewImage{
+        height: 30vh;
+        width: 80vw;
+        flex-direction: column;
+        z-index: 1000;
+        justify-content:space-between;
+        align-items: flex-end;
+        margin: auto;
+    }
+    .viewImage img{
+        max-height: 25vh;
+        max-width: 70vw;
+    }
+    
+    .viewImage .image{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 80vw;
+        height: 30vh;
+        position: relative;
+        top:-2.25vw
+    }
+}
+

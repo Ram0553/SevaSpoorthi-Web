@@ -1,0 +1,109 @@
+.gallery{
+    margin: 1vw;
+    display: block;
+    z-index: 1;
+}
+
+.gallery h1{
+    display: block;
+    margin: auto;
+    width: fit-content;
+    color: #00544b;
+}
+
+.gallery .tileview h6{
+    display: block;
+    margin:auto;
+    margin-right: 0px;
+    width: fit-content;
+    color: #00544b;
+    font-size: 1.3vw;
+    padding: 10px;
+}
+
+.gallery .line{
+    display: block;
+    width: 50vw;
+    height: .2vw;
+    background: #F17211;
+    margin: 2vw auto;
+}
+
+.gallery .tileview img{
+    height: 15vw;
+    width: 15vw;
+    transition-duration: 1500ms;
+    margin: auto;
+}
+
+.gallery .tileview img:hover{
+    height: 13vw;
+    width: 13vw;
+    margin: auto;
+    padding: auto;
+    cursor: pointer;
+    transition-duration: 1000ms;
+}
+
+.gallery .images{
+    
+    display: grid;
+    grid-template-columns: 15vw 15vw 15vw 15vw;
+    justify-content: center;
+    grid-gap: 1.5vw;
+}
+
+.gallery .tileview h6:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media screen and (max-width:800px) {
+
+    .gallery h1{
+        font-size: 4vw;
+        display: block;
+        margin: auto;
+        width: fit-content;
+        color: #00544b;
+    }
+    
+    .gallery .tileview h6{
+        display: block;
+        margin:auto;
+        margin-right: 0px;
+        width: fit-content;
+        color: #00544b;
+        font-size: 2.5vw;
+        padding: 10px;
+    }
+    
+    .gallery .line{
+        display: block;
+        width: 50vw;
+        height: .2vw;
+        background: #F17211;
+        margin: 2vw auto;
+    }
+    .gallery .tileview img{
+        height: 24vw;
+        width: 24vw;
+    }
+
+    .gallery .tileview img:hover{
+        height: 21vw;
+        width: 21vw;
+        margin: auto;
+        padding: auto;
+        cursor: pointer;
+        transition-duration: 1500ms;
+    }
+    
+    .gallery .images{
+        
+        display: grid;
+        grid-template-columns: 24vw 24vw 24vw;
+        justify-content: center;
+        grid-gap: 1vw;
+    }
+}
