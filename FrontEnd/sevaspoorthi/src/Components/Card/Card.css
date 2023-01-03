@@ -1,0 +1,61 @@
+.card {
+    position: relative;
+    border-radius: 2%;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+}
+
+.card:hover .card-description{
+    height: 100%;
+    background-color: rgba(68, 30, 194, 0.5);
+}
+
+.card-image {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.card-image img {
+    height: 85%;
+    width: 100%;
+    display: block;
+}
+
+.mini-caption {
+    position: relative;
+    height: 15%;
+    width: 100%;
+    border-top: 3px solid black;
+    background: rgb(169, 165, 165);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* -webkit-mask-image: url(mini-caption-mask.svg);
+    mask-image: url(mini-caption-mask.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%; */
+}
+
+.card-description {
+    overflow: hidden;
+    position: absolute;
+    height: 0;
+    top: 0;
+    z-index: 2;
+    transition : all 1s ease-in-out;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-description div {
+    word-wrap: break-word;
+    padding: 1rem;
+}
+
