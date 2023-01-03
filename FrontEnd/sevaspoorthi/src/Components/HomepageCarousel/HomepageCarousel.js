@@ -5,7 +5,7 @@ import homepage from './HomepageSlides'
 function HomepageCarousel(props)
 {
     const outerCarouselStyleSettings = {
-        height:"100vh"
+        height:"80vh"
       };
     return (
         <Carousel className="homepage-carousel" slides={homepage.slides} styleSettings={outerCarouselStyleSettings}/>
