@@ -1,0 +1,76 @@
+.scrollNotification {
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100vw;
+    height: 3rem;
+    overflow-x: hidden;
+    cursor: pointer;
+    background-color:  #025f56;
+}
+
+.scrollElement {
+    display:flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+
+.primary {
+    animation: primary 30s linear infinite;
+}
+
+.secondary {
+    animation: secondary 30s linear infinite;
+}
+
+.scrollNotification:hover .primary {
+    animation-play-state: paused;
+}
+
+.scrollNotification:hover .secondary {
+    animation-play-state: paused;
+}
+
+
+@keyframes primary {
+    from {
+        transform: translate(0);
+    }
+    to {
+        transform: translate(calc(-1*var(--paddedDivLength)));
+    }
+}
+
+@keyframes secondary {
+    from {
+        transform: translate(var(--paddedDivLength));
+    }
+    to {
+        transform: translate(0);
+    }
+}
+
+.notification {
+    width: inherit;
+    height: inherit;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: large;
+}
+
+.notification a {
+    text-decoration: none;
+    color: #fff;
+}
