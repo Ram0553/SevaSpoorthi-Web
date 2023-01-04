@@ -1,10 +1,12 @@
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState,useEffect } from 'react'
-import { menuItems } from './menuItem';
+import Menuitem from './menuItem';
 import MenuItems from './MenuItems';
 import logo from "./logo.png"
 import './NavBar.css'
+import { useContext } from 'react';
+import { AuthContext } from '../Authentication/AuthState';
 
 
 
@@ -45,6 +47,13 @@ function NavBar() {
         return () => window.removeEventListener('scroll', myFunction);
     
       }, [myFunction]);
+      const { currentUser } = useContext(AuthContext);
+
+      useEffect(() => {
+        if(currentUser!=null){
+            console.log(currentUser.displayName);
+        }
+      }, [currentUser]);
     
   return (
     <div>
@@ -66,7 +75,7 @@ function NavBar() {
                 <FontAwesomeIcon icon={faXmark} className='menu-button' />
                 </button>
                 <div className='nav-div'>
-                    {menuItems.map((menu, index) => {
+                    {Menuitem({currentUser}).map((menu, index) => {
                         return <MenuItems items={menu} key={index} />;
                     })}
                 </div>
