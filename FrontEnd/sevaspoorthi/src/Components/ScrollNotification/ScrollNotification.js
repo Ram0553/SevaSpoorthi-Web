@@ -11,7 +11,6 @@ function ScrollNotification(props)
             </div>
         );
     }); 
-    console.log(notificationsDiv);
     const divLength = useRef(0); 
     
     useEffect(() => {
