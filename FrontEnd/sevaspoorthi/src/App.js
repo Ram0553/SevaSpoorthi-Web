@@ -7,12 +7,15 @@ import Welcome from './Components/Welcome/Welcome';
 import HomepageCarousel from './Components/HomepageCarousel/HomepageCarousel';
 import CardDeck from './Components/CardDeck/CardDeck';
 import cardDeckItems from './CardDeckItems';
+import ScrollNotification from './Components/ScrollNotification/ScrollNotification';
+import scrollNotificationList from './scrollNotificationList';
 
 function App() {
   return (
     <div>
       <Auth/>
       <NavBar/>
+      <ScrollNotification notifications={scrollNotificationList}/>
       <HomepageCarousel/>
       <Welcome/>
       <Gallery/>
