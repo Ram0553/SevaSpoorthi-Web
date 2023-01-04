@@ -18,6 +18,14 @@
     border-radius: 10px;
     padding: 20px;
 }
+
+.auth-box h6{
+    padding: 0px;
+    margin: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #d82a2a;
+}
 .cross{
     display: flex;
     flex-direction: row;
@@ -42,7 +50,6 @@
     justify-content:space-evenly;
     padding-top: 20px;
     font-size: 1rem;
-    /* padding-bottom: 20px; */
 }
 
 .login-radio-button{

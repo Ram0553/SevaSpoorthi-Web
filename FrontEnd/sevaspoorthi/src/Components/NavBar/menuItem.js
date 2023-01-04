@@ -1,7 +1,16 @@
+import fireAuth from "../../Config/Firebase";
+
 const auth=()=>{
   document.getElementsByClassName("auth")[0].style.cssText='display:flex';
 }
-export const menuItems = [
+
+const signOut=()=>{
+  fireAuth.signOut();
+}
+
+function Menuitem({currentUser}){
+
+  return [
     {
         title: 'Home',
         url: '#',
@@ -35,9 +44,11 @@ export const menuItems = [
         
       },
       {
-        title: 'SignUp/Login',
+        title:currentUser==null?'SignUp/Login':'LogOut',
         url: '#',
-        onClick:auth
+        onClick:currentUser==null?auth:signOut
         
       },    
   ];
+}
+export default Menuitem

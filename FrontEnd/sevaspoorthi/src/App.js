@@ -7,11 +7,13 @@ import Welcome from './Components/Welcome/Welcome';
 import HomepageCarousel from './Components/HomepageCarousel/HomepageCarousel';
 import CardDeck from './Components/CardDeck/CardDeck';
 import cardDeckItems from './CardDeckItems';
+import { AuthProvider } from './Components/Authentication/AuthState';
 import ScrollNotification from './Components/ScrollNotification/ScrollNotification';
 import scrollNotificationList from './scrollNotificationList';
 
 function App() {
   return (
+    <AuthProvider>
     <div>
       <Auth/>
       <NavBar/>
@@ -71,6 +73,7 @@ Generated 10 paragraphs, 751 words, 5033 bytes of Lorem Ipsum
   </div>
   <Footer/>
   </div>
+  </AuthProvider>
   );
 }
 
