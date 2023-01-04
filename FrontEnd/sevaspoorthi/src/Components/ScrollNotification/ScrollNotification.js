@@ -16,7 +16,6 @@ function ScrollNotification(props)
     useEffect(() => {
         divLength.current = document.getElementsByClassName("scrollElement")[0].scrollWidth;
         const paddedDivLength = divLength.current+100;
-        console.log(paddedDivLength);
         document.getElementsByClassName("scrollNotification")[0].style.cssText = "--paddedDivLength: " + paddedDivLength.toString()+"px";
     });
 
