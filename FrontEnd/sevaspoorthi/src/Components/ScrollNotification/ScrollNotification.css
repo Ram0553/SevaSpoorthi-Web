@@ -1,5 +1,4 @@
 .scrollNotification {
-    margin-top: 100px;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -73,4 +72,8 @@
 .notification a {
     text-decoration: none;
     color: #fff;
+}
+
+.notification a:hover {
+    color: yellow;
 }
