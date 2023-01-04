@@ -5,9 +5,9 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    width: 100vw;
+    width: 100%;
     height: 3rem;
-    overflow-x: hidden;
+    overflow: hidden;
     cursor: pointer;
     background-color:  #025f56;
 }
