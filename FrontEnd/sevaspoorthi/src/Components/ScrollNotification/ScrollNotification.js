@@ -1,5 +1,5 @@
 import './ScrollNotification.css';
-import { useEffect,useRef } from 'react';
+import { useEffect } from 'react';
 
 function ScrollNotification(props)
 {
@@ -11,11 +11,10 @@ function ScrollNotification(props)
             </div>
         );
     }); 
-    const divLength = useRef(0); 
     
     useEffect(() => {
-        divLength.current = document.getElementsByClassName("scrollElement")[0].scrollWidth;
-        const paddedDivLength = divLength.current+100;
+        const divLength = document.getElementsByClassName("scrollElement")[0].scrollWidth;
+        const paddedDivLength = divLength+100;
         document.getElementsByClassName("scrollNotification")[0].style.cssText = "--paddedDivLength: " + paddedDivLength.toString()+"px";
     });
 
