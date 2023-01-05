@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import fireAuth from '../../Config/Firebase'
 import React, { useEffect, useState } from 'react';
 import './Auth.css';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import LoadingSpinner from '../LoadingSpinner/Spinner';
 
 
 function Auth() { 
@@ -14,6 +15,7 @@ function Auth() {
     const [emailFlag,setEmailFlag]=useState(false);
     const [passFlag,setPassFlag]=useState(false);
     const [nameFlag,setNameFlag]=useState(false);
+    const [isLoading,setIsLoading] =useState(false);
     const nameErr = "Length of Name cannot be less than 3 characters";
     const emailErr = "Invalid Email";
     const passErr = "Length of Password cannot be less than 6 characters";
@@ -79,11 +81,13 @@ function Auth() {
 
     const SignUp = async ()=>{
         try {
+            setIsLoading(true);
             await createUserWithEmailAndPassword(fireAuth,email,pass);
-            await updateProfile(fireAuth.currentUser,{displayName:name});            
+            await updateProfile(fireAuth.currentUser,{displayName:name});        
         } catch (error) {
             alert(error);
         }
+        setIsLoading(false);
         crossed(); 
     }
 
@@ -106,12 +110,13 @@ function Auth() {
 
     const SignIn = async ()=>{
         try {
-            await signInWithEmailAndPassword(fireAuth,email,pass);         
+            setIsLoading(true);
+            await signInWithEmailAndPassword(fireAuth,email,pass);     
         } catch (error) {
-            alert(error);
+            alert(error);         
         }
-        crossed(); 
-        console.log("LoggedIn");
+        setIsLoading(false);  
+        crossed();
     }
 
     const CheckSignIn = () =>{
@@ -161,6 +166,34 @@ function Auth() {
         }
     }
 
+    const handleForgotPass = async () => {
+        if(!validEmail.test(email)){
+            setEmailFlag(true);
+            return;
+        }
+        try {
+            setIsLoading(true);         
+            await sendPasswordResetEmail(fireAuth,email); 
+            alert("Password reset link has been sent to the email.")
+        } catch (error) {
+            alert(error);
+        }
+        setIsLoading(false);
+    }
+
+    const handleGoogleLogin = async () => {
+        const provider  = new GoogleAuthProvider();
+        try {
+            setIsLoading(true);
+            await signInWithPopup(fireAuth,provider);
+        } catch (error) {
+            alert(error);
+        }
+        setIsLoading(false);
+        crossed();
+        
+    }
+
 
 
     return (
@@ -183,7 +216,7 @@ function Auth() {
                         value={pass} type="password" placeholder='Password' />
                         <h6 className='password-error'>{passFlag==true? passErr:""}</h6>
 
-                        <p>Forgot Password</p>
+                        <p onClick={handleForgotPass}>Forgot Password</p>
                 
                         <button onClick={handleSubmit} type="submit" className='submit'>
                         Submit
@@ -210,11 +243,12 @@ function Auth() {
                     <span>or</span>
                 </div>
                 <div className='other-login'>
-                    <button onClick={handleSubmit} className="google-login">
+                    <button onClick={handleGoogleLogin} className="google-login">
                     <FontAwesomeIcon icon={faGoogle} onClick={crossed} className='font-awesome-google'/>
                     <a>Google</a>
                     </button>
                 </div>
+                {isLoading===true?<LoadingSpinner/>:""}
             </div>
         </div>
     )
