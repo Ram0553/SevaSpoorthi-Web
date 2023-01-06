@@ -1,7 +1,7 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import fireAuth from '../../Config/Firebase'
+import {fireAuth} from '../../Config/Firebase';
 import React, { useEffect, useState } from 'react';
 import './Auth.css';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -220,4 +220,4 @@ function Auth() {
     )
 }
 
-export default Auth
+export default Auth;
