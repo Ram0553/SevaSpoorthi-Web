@@ -9,7 +9,7 @@ import CardDeck from './Components/CardDeck/CardDeck';
 import cardDeckItems from './CardDeckItems';
 import { AuthProvider } from './Components/Authentication/AuthState';
 import ScrollNotification from './Components/ScrollNotification/ScrollNotification';
-import scrollNotificationList from './scrollNotificationList';
+import HomePage from './Components/HomePage/HomePage';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
     <div>
       <Auth/>
       <NavBar/>
-      <ScrollNotification notifications={scrollNotificationList}/>
+      <ScrollNotification/>
       <HomepageCarousel/>
       <Welcome/>
       <Gallery/>
