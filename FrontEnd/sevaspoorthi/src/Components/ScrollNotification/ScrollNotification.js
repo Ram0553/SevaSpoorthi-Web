@@ -18,7 +18,7 @@ function isEqual(stateNotificationsKeyList,newNotificationsKeyList)
 
 function ScrollNotification()
 {
-    const notificationRef = ref(fireDb, "Notification");
+    const notificationRef = ref(fireDb, "ScrollNotification");
     const [notificationsDiv,updateNotificationsDiv] = useState([]);
     const notificationsList = useRef({});
     onValue(notificationRef,(snapshot) => {
