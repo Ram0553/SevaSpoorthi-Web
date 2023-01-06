@@ -1,22 +1,6 @@
-// import { useState } from "react";
-// import fireAuth from "../../Config/Firebase";
-
-// const [username,setUsername] = useState("")
-// fireAuth.onAuthStateChanged((user)=>{
-//     if(user){
-//         setUsername(user.displayName);
-//     }
-//     else{
-//         setUsername("");
-//     }
-// });
-
-// export default username;
-
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { fireAuth } from "../../Config/Firebase";
-
 
 export const AuthContext = React.createContext("");
 

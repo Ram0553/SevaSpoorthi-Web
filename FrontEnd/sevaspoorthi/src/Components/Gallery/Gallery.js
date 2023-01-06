@@ -32,7 +32,6 @@ function Gallery(){
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
 
-    // console.log("Hiii")
     useEffect(() => {
         call(setPhotos)
     }, [])

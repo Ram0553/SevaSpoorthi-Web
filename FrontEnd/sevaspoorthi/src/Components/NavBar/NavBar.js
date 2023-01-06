@@ -8,11 +8,6 @@ import './NavBar.css'
 import { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthState';
 
-
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-
-
 function NavBar() {
 
     const menu=()=>{
@@ -48,12 +43,6 @@ function NavBar() {
     
       }, [myFunction]);
       const { currentUser } = useContext(AuthContext);
-
-      useEffect(() => {
-        if(currentUser!=null){
-            console.log(currentUser.displayName);
-        }
-      }, [currentUser]);
     
   return (
     <div>
