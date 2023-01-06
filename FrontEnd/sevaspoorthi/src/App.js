@@ -9,7 +9,6 @@ import CardDeck from './Components/CardDeck/CardDeck';
 import cardDeckItems from './CardDeckItems';
 import { AuthProvider } from './Components/Authentication/AuthState';
 import ScrollNotification from './Components/ScrollNotification/ScrollNotification';
-import HomePage from './Components/HomePage/HomePage';
 
 function App() {
   return (
