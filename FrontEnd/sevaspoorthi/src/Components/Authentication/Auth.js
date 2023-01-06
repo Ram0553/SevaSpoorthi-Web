@@ -1,11 +1,12 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {fireAuth} from '../../Config/Firebase';
+import {fireAuth, fireDb} from '../../Config/Firebase';
 import React, { useEffect, useState } from 'react';
 import './Auth.css';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import LoadingSpinner from '../LoadingSpinner/Spinner';
+import { ref, set } from 'firebase/database';
 
 
 function Auth() { 
@@ -76,14 +77,21 @@ function Auth() {
         }
     },[name]);
 
-
+    const AddUserDetails = async ()=>{
+        try {
+            await set(ref(fireDb,'Users/'+fireAuth.currentUser.uid),{Name:name,Mail:email});
+        } catch (error) {
+            alert(error);
+        }
+    }
     
 
     const SignUp = async ()=>{
         try {
             setIsLoading(true);
             await createUserWithEmailAndPassword(fireAuth,email,pass);
-            await updateProfile(fireAuth.currentUser,{displayName:name});        
+            await updateProfile(fireAuth.currentUser,{displayName:name});       
+            await AddUserDetails(); 
         } catch (error) {
             alert(error);
         }
@@ -111,7 +119,7 @@ function Auth() {
     const SignIn = async ()=>{
         try {
             setIsLoading(true);
-            await signInWithEmailAndPassword(fireAuth,email,pass);     
+            await signInWithEmailAndPassword(fireAuth,email,pass);
         } catch (error) {
             alert(error);         
         }

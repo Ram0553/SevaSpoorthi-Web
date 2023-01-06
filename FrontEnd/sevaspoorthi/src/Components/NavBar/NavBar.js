@@ -7,6 +7,8 @@ import logo from "./logo.png"
 import './NavBar.css'
 import { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthState';
+import { child, get, ref } from 'firebase/database';
+import { fireAuth, fireDb } from '../../Config/Firebase';
 
 function NavBar() {
 
@@ -26,6 +28,7 @@ function NavBar() {
 
     
     const [menuBar,setMenuBar]=useState(true);
+    const [checkAdmin,setCheckAdmin]=useState(false);
 
     const myFunction=()=> {
         var navbar = document.getElementsByClassName("navbar")[0];
@@ -41,8 +44,24 @@ function NavBar() {
     
         return () => window.removeEventListener('scroll', myFunction);
     
-      }, [myFunction]);
-      const { currentUser } = useContext(AuthContext);
+    }, [myFunction]);
+    
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        if(fireAuth.currentUser==null){
+            setCheckAdmin(false);
+            return;
+        }
+        get(child(ref(fireDb),`Admin/${fireAuth.currentUser.uid}`)).then((snapshot)=>{
+            if(snapshot.exists()){
+                setCheckAdmin(true);
+            }
+        });
+    }, [currentUser])
+    
+
+
     
   return (
     <div>
@@ -52,6 +71,9 @@ function NavBar() {
                 <div className='logo-name'>
                     <h3>Seva</h3>
                     <h3>Spoorthi</h3>
+                </div>
+                <div>
+                    {checkAdmin==true?<h4>Add Admin</h4>:""}
                 </div>
             </div>
 
