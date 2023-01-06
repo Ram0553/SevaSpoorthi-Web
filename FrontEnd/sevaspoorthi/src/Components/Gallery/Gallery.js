@@ -19,8 +19,7 @@ function call(setPhotos){
     setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
     setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=3500"])
     setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=3500"])
-    console.log("Hello")
-    return
+    return;
 }
 
 function open(index,setCurPhoto){
@@ -33,7 +32,7 @@ function Gallery(){
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
 
-    console.log("Hiii")
+    // console.log("Hiii")
     useEffect(() => {
         call(setPhotos)
     }, [])
@@ -42,7 +41,6 @@ function Gallery(){
         if(photos.length>0){
             setCurPhoto(0);
         }
-        console.log(curPhoto)
     },[])
     
     return(
@@ -63,6 +61,6 @@ function Gallery(){
             </div>
             <div className="line"/>
         </div>
-    )
+    );
 }
-export default Gallery
+export default Gallery;

@@ -1,4 +1,4 @@
-import fireAuth from "../../Config/Firebase";
+import { fireAuth } from "../../Config/Firebase";
 
 const auth=()=>{
   document.getElementsByClassName("auth")[0].style.cssText='display:flex';
