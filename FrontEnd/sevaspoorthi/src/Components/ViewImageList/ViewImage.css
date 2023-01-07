@@ -23,7 +23,7 @@
     width: 60vw;
     height: 65vh;
     position: relative;
-    top:-2.25vw
+    top:-2.25vw;
 }
 
 .viewImage .fontawesome{
@@ -31,6 +31,7 @@
     height: 8vw;
     width: 2.5vw;
     margin: 1vw;
+    user-select: none;
 }
 
 .viewImage .fontawesome:hover{
@@ -94,6 +95,7 @@
     .viewImage img{
         max-height: 25vh;
         max-width: 70vw;
+        transition-delay: 4000ms;
     }
     
     .viewImage .image{

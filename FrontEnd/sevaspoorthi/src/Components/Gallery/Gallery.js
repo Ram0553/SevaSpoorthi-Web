@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import "./Gallery.css";
-import ViewImage from "./ViewImage";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { limitToFirst, onValue, orderByKey, query, ref, startAt } from "firebase/database";
+import React, { useEffect, useState } from "react"
+import { fireDb } from "../../Config/Firebase";
+import NavBar from "../NavBar/NavBar";
+import ViewImage from "../ViewImageList/ViewImage";
+import { useNavigate, useParams } from "react-router-dom";
 
-function call(setPhotos){
-    
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20788/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20756/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20785/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20784/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20783/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20789/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20780/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20781/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=3500"])
-    setPhotos(arr=>[...arr,"https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=3500"])
+function fetchPhotos(setPhotos,key,path){
+    const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(), startAt(key.toString()),limitToFirst(5));
+    onValue(recentPostsRef,(snapshot)=>{
+        if(snapshot.exists()){
+            snapshot.forEach((photo)=>{
+                const pid=photo.key;
+                const plink=photo.child("Link").val();
+                const obj = {photoId:pid,photoLink:plink};
+                setPhotos(photos=>[...photos,obj]);
+            })
+        }
+    },{onlyOnce:true})
     return;
 }
 
@@ -29,37 +29,48 @@ function open(index,setCurPhoto){
 }
 
 function Gallery(){
+    function More(){
+        navigate("/Gallery/"+path+"/"+photos[photos.length-1].photoId);
+        navigate(0);
+    }
+
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
+    const {path,key} = useParams();
+    const navigate = useNavigate();
+
 
     useEffect(() => {
-        call(setPhotos)
-    }, [])
+        fetchPhotos(setPhotos,key,path)
+    }, [key])
 
     useEffect(()=>{
         if(photos.length>0){
             setCurPhoto(0);
         }
-    },[])
-    
-    return(
-        <div className="gallery">
-            <h1>
-                Gallery
-            </h1>
-            <div className="line"/>
-            <div className="tileview">
-                <div className="images">
-                    {photos.map((imgSrc,key) => (<img src={imgSrc} key={key} alt="Imag"  onClick={()=>open(key,setCurPhoto)}/>))}
+    },[photos])
+    return (
+        <>
+            <NavBar/>
+            <div className="gallery">
+                <h1>
+                    Gallery
+                </h1>
+                <div className="line"/>
+                <div className="tileview">
+                    <div className="images">
+                        {photos.map((imgSrc,key) => (key<5?<img src={imgSrc.photoLink} key={key} alt="Image"  onClick={()=>open(key,setCurPhoto)}/>:""))}
+                    </div>
+                    
+                    {photos.length>4?<h6 onClick={More}>More  <FontAwesomeIcon icon={faArrowRight}/></h6>:""}
                 </div>
-                
-                {photos.length>12?<h6>View All  <FontAwesomeIcon icon={faArrowRight}/></h6>:""}
+                <div>
+                    {photos.length>0?<ViewImage photos={photos} curPhoto={curPhoto} setCurPhoto={setCurPhoto}/>:""}
+                </div>
+                <div className="line"/>
             </div>
-            <div>
-                {photos.length>0?<ViewImage photos={photos} curPhoto={curPhoto} setCurPhoto={setCurPhoto}/>:""}
-            </div>
-            <div className="line"/>
-        </div>
+        </>
     );
 }
+
 export default Gallery;

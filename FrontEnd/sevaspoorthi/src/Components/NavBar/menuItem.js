@@ -63,7 +63,7 @@ function Menuitem({currentUser,checkAdmin}){
   [
     {
         title: 'Home',
-        url: '#',
+        url: '/',
       },
       {
         title: 'About',
