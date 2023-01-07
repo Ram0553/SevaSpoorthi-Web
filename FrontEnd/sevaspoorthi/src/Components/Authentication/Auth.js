@@ -79,7 +79,7 @@ function Auth() {
 
     const AddUserDetails = async ()=>{
         try {
-            await set(ref(fireDb,'Users/'+fireAuth.currentUser.uid),{Name:name,Mail:email});
+            await set(ref(fireDb,'Users/'+fireAuth.currentUser.uid),{Name:fireAuth.currentUser.displayName,Mail:fireAuth.currentUser.email});
         } catch (error) {
             alert(error);
         }
@@ -194,6 +194,7 @@ function Auth() {
         try {
             setIsLoading(true);
             await signInWithPopup(fireAuth,provider);
+            await AddUserDetails();
         } catch (error) {
             alert(error);
         }
