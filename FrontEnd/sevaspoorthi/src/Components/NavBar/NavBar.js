@@ -7,8 +7,6 @@ import logo from "./logo.png"
 import './NavBar.css'
 import { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthState';
-import { child, get, ref } from 'firebase/database';
-import { fireAuth, fireDb } from '../../Config/Firebase';
 
 function NavBar() {
 
@@ -28,7 +26,6 @@ function NavBar() {
 
     
     const [menuBar,setMenuBar]=useState(true);
-    const [checkAdmin,setCheckAdmin]=useState(false);
 
     const myFunction=()=> {
         var navbar = document.getElementsByClassName("navbar")[0];
@@ -46,19 +43,7 @@ function NavBar() {
     
     }, [myFunction]);
     
-    const { currentUser } = useContext(AuthContext);
-
-    useEffect(() => {
-        if(fireAuth.currentUser==null){
-            setCheckAdmin(false);
-            return;
-        }
-        get(child(ref(fireDb),`Admin/${fireAuth.currentUser.uid}`)).then((snapshot)=>{
-            if(snapshot.exists()){
-                setCheckAdmin(true);
-            }
-        });
-    }, [currentUser])
+    const {currentUser , checkAdmin} = useContext(AuthContext);
     
 
 
