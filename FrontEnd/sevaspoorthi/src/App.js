@@ -1,14 +1,14 @@
 import './App.css';
+import cardDeckItems from './CardDeckItems';
 import Auth from './Components/Authentication/Auth';
+import CardDeck from './Components/CardDeck/CardDeck';
 import Footer from './Components/Footer/Footer';
 import Gallery from './Components/Gallery/Gallery';
-import NavBar from './Components/NavBar/NavBar';
-import Welcome from './Components/Welcome/Welcome';
 import HomepageCarousel from './Components/HomepageCarousel/HomepageCarousel';
-import CardDeck from './Components/CardDeck/CardDeck';
-import cardDeckItems from './CardDeckItems';
-import { AuthProvider } from './Components/Authentication/AuthState';
+import NavBar from './Components/NavBar/NavBar';
 import ScrollNotification from './Components/ScrollNotification/ScrollNotification';
+import Welcome from './Components/Welcome/Welcome';
+import { AuthProvider } from './Context/AuthContext';
 
 function App() {
   return (
