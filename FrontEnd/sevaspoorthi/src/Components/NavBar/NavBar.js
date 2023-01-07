@@ -41,8 +41,12 @@ function NavBar() {
     
         return () => window.removeEventListener('scroll', myFunction);
     
-      }, [myFunction]);
-      const { currentUser } = useContext(AuthContext);
+    }, [myFunction]);
+    
+    const {currentUser , checkAdmin} = useContext(AuthContext);
+    
+
+
     
   return (
     <div>
@@ -52,6 +56,9 @@ function NavBar() {
                 <div className='logo-name'>
                     <h3>Seva</h3>
                     <h3>Spoorthi</h3>
+                </div>
+                <div>
+                    {checkAdmin==true?<h4>Add Admin</h4>:""}
                 </div>
             </div>
 
