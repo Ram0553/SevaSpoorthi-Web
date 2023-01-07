@@ -57,6 +57,20 @@
     margin: 0px;
     padding: 0px;
 }
+
+.navbar .add-admin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 3vw;
+}
+.navbar .add-admin a{
+    text-decoration:none;
+    color: black;
+    font-weight:400;
+}
+
 .navbar .nav-list{
     display: flex;
     overflow: hidden;

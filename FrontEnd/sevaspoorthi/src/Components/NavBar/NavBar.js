@@ -1,12 +1,11 @@
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState,useEffect } from 'react'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
+import logo from "./logo.png";
 import Menuitem from './menuItem';
 import MenuItems from './MenuItems';
-import logo from "./logo.png"
-import './NavBar.css'
-import { useContext } from 'react';
-import { AuthContext } from '../Authentication/AuthState';
+import './NavBar.css';
 
 function NavBar() {
 
@@ -23,7 +22,6 @@ function NavBar() {
         console.log(menuBar);
         return
     }
-
     
     const [menuBar,setMenuBar]=useState(true);
 
@@ -57,9 +55,6 @@ function NavBar() {
                     <h3>Seva</h3>
                     <h3>Spoorthi</h3>
                 </div>
-                <div>
-                    {checkAdmin==true?<h4>Add Admin</h4>:""}
-                </div>
             </div>
 
             <button onClick={menu} className='side-menubar'>
@@ -71,7 +66,7 @@ function NavBar() {
                 <FontAwesomeIcon icon={faXmark} className='menu-button' />
                 </button>
                 <div className='nav-div'>
-                    {Menuitem({currentUser}).map((menu, index) => {
+                    {Menuitem({currentUser,checkAdmin}).map((menu, index) => {
                         return <MenuItems items={menu} key={index} />;
                     })}
                 </div>
