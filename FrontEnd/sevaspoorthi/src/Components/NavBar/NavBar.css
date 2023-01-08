@@ -109,6 +109,10 @@
     font-size: 1vw;
 }
 
+.nav-items:hover{
+    cursor: pointer;
+}
+
 .nav-items:hover .dropdown{
     display: block;
     background-color: #ffffff;
