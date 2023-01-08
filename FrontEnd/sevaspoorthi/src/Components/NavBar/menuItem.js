@@ -18,7 +18,7 @@ function Menuitem({currentUser,checkAdmin}){
   [
     {
         title: 'Home',
-        url: '#',
+        url: '/',
       },
       {
         title: 'About',
@@ -50,12 +50,10 @@ function Menuitem({currentUser,checkAdmin}){
       },
       {
         title: 'Admin Portal',
-        url: '#',
-        onClick:adminPortal,
+        url: '/AdminPortal',
       },
       {
         title:currentUser==null?'SignUp/Login':'LogOut',
-        url: '#',
         onClick:currentUser==null?auth:signOut
         
       },    
@@ -63,7 +61,7 @@ function Menuitem({currentUser,checkAdmin}){
   [
     {
         title: 'Home',
-        url: '#',
+        url: '/',
       },
       {
         title: 'About',
@@ -95,7 +93,6 @@ function Menuitem({currentUser,checkAdmin}){
       },
       {
         title:currentUser==null?'SignUp/Login':'LogOut',
-        url: '#',
         onClick:currentUser==null?auth:signOut
         
       },    
