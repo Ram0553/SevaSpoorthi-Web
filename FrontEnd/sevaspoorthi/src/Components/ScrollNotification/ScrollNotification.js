@@ -1,5 +1,5 @@
 import './ScrollNotification.css';
-import { useState,useRef,useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import { fireDb } from '../../Config/Firebase';
 import { ref,onValue } from 'firebase/database';
 
@@ -16,38 +16,50 @@ function isEqual(stateNotificationsKeyList,newNotificationsKeyList)
     return true;
 }
 
-function ScrollNotification()
+function convertToScrollNotificationDiv(notifications) {
+    var newNotificationsDiv = [];
+    for (var notif_key in notifications)
+    {
+        var value = notifications[notif_key];
+        newNotificationsDiv.push(
+            <div className="notification" key={notif_key}>
+                <a href={value.url}>  <strong>🆕📢{value.content}</strong></a>
+            </div>
+        );
+    }
+    return newNotificationsDiv;
+}
+
+function setScrollNotifications(updateNotificationsDiv)
 {
-    const notificationRef = ref(fireDb, "ScrollNotification");
-    const [notificationsDiv,updateNotificationsDiv] = useState([]);
-    const notificationsList = useRef({});
-    onValue(notificationRef,(snapshot) => {
-        if(snapshot.exists())
-        {
+    if (typeof(setScrollNotifications.notificationKeys) === 'undefined')
+    {
+        setScrollNotifications.notificationKeys = [];
+    }   
+    onValue(ref(fireDb,"ScrollNotification"),(snapshot) => {
+        if(snapshot.exists()) {
             const notifications = snapshot.val();
-            if(!isEqual(Object.keys(notificationsList.current),Object.keys(notifications)))
+            let newNotificationKeys = Object.keys(notifications);
+            if(!isEqual(setScrollNotifications.notificationKeys,newNotificationKeys))
             {
-                notificationsList.current = notifications;
-                var newNotificationsDiv = [];
-                for (var notif_key in notifications)
-                {
-                    var value = notifications[notif_key];
-                    newNotificationsDiv.push(
-                        <div className="notification" key={notif_key}>
-                            <a href={value.url}>  <strong>🆕📢{value.content}</strong></a>
-                        </div>
-                    );
-                }
-                updateNotificationsDiv(newNotificationsDiv);
+                setScrollNotifications.notificationKeys = newNotificationKeys;
+                const notificationsDiv = convertToScrollNotificationDiv(notifications);
+                updateNotificationsDiv(notificationsDiv);
             }
         }
-        else if(notificationsDiv.length !== 0)
-        {
+        else if(setScrollNotifications.notificationKeys.length > 0){
+            setScrollNotifications.notificationKeys = [];
             updateNotificationsDiv([]);
         }
     });
+}
 
+function ScrollNotification()
+{
+    const [notificationsDiv,updateNotificationsDiv] = useState([]);
+    
     useEffect(() => {
+        setScrollNotifications(updateNotificationsDiv);
         if(notificationsDiv.length !== 0)
         {
             const divLength = document.getElementsByClassName("scrollElement")[0].scrollWidth;
