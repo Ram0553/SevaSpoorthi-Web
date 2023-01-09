@@ -1,4 +1,3 @@
-import React from "react";
 import './Footer.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,8 +6,9 @@ import {
     faTwitter,
     faInstagram
   } from "@fortawesome/free-brands-svg-icons";
+import logo from './logo.png';
+import mapImage from './map.png';
 
-  
 function FooterSocialMediaLinks(props)
 {
     return (
@@ -40,15 +40,33 @@ function FooterBody(props)
     return (
         <div className="footer-body">
             <div className="about-us">
-                <h1>About Us</h1>
-                <img src="./logo192.png" alt="Logo" />
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi blanditiis voluptas enim animi, deleniti consequuntur fuga doloribus cum ipsam quidem iure vel eius tempora labore corporis dolores deserunt nostrum possimus.</p>
+                <h3>About Us</h3>
+                <img src={logo} alt="Logo" style={{ maxWidth:"50%",aspectRatio:"1/1",float:"left" }}/>
+                <p> Seva Spoorthi Foundation is a NGO working for the cause of welfare of the farming community, with Specific advisory on organic farming, related  farm technologies  to  encourage  farmers  for organized Production to make available healthy products to consumers, improve income of the farmers and Sustainable agriculture in the states of Telangana and AP. We have been creating awareness on organic, IPM and good farming practices since 2020. </p>
             </div>
-            <div className="our-work">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque praesentium doloremque, sunt voluptate a temporibus aliquam facilis similique error officia itaque molestiae illo consequatur autem? Iste omnis reprehenderit a iusto.</p>
+            <div className="quick-links">
+                <h3> Quick Links </h3>
+                <a href=""> <p> Home </p> </a>
+                <a href=""> <p> About </p> </a>
+                <a href=""> <p> Donate </p> </a>
+                <a href=""> <p> Villages </p> </a>
             </div>
-            <div className="contact-us">
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum blanditiis natus veniam, consectetur commodi in placeat sed debitis provident laboriosam voluptate repellendus fuga, sint expedita hic repellat ea non itaque. </p>
+            <div className="connect">
+                <h3> Connect </h3>
+                <a href=""> <p> Our Mission </p> </a>
+                <a href=""> <p> Notifications </p> </a>
+                <a href=""> <p> News </p> </a>
+                <a href=""> <p> Events </p> </a>
+            </div>
+            <div className="offices-map">
+                <div>
+                    <h3> Contact Us </h3>
+                    <p> Hyd Office Location</p>
+                    <p> Call Us: phonenumber </p>
+                </div>
+                <div className="google-map">
+                    <img src={mapImage} alt="Map" style={{width:"95%",aspectRatio:"1/1"}}/>
+                </div>                
             </div>
         </div>
     );

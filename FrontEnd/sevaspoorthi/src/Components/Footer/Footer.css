@@ -25,14 +25,23 @@
 /* Footer body section*/
 .footer-body{
     display: grid;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(4,25%);
     column-gap: 0.5rem;
     margin: 1rem;
 }
 
-.about-us img{
-    float: left;
+.quick-links {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
 }
+
+.footer-body a{
+    text-decoration: none;
+    color: white;
+}
+
 /* CopyRight section */
 .footer-copyright{
     height: 2rem;
