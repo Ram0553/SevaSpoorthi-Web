@@ -30,6 +30,10 @@
     margin: 1rem;
 }
 
+.about-us p{
+    text-align: justify;
+}
+
 .quick-links {
     position: relative;
     display:flex;
