@@ -14,7 +14,7 @@ function FooterSocialMediaLinks(props)
     return (
         <div className = 'footer-socialmedialinks'>
             <div className = 'social-links'>
-                <a href="https://www.youtube.com/"
+                <a href="https://youtube.com/@sevaspoorthifoundation3191"
                     className="youtube-social">
                     <FontAwesomeIcon icon={faYoutube} />
                 </a>
