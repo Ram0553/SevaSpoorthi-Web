@@ -62,7 +62,6 @@ function HomePageGallery(){
             <div>
                 {photos.length>0?<ViewImage photos={photos} curPhoto={curPhoto} setCurPhoto={setCurPhoto}/>:""}
             </div>
-            <div className="line"/>
         </div>
     );
 }

@@ -8,7 +8,7 @@
 
 .card:hover .card-description{
     height: 100%;
-    background-color: rgba(68, 30, 194, 0.5);
+    background-color: #025f56cb;
 }
 
 .card-image {
@@ -19,26 +19,27 @@
 }
 
 .card-image img {
-    height: 85%;
+    height: 82%;
     width: 100%;
     display: block;
+    
 }
 
 .mini-caption {
-    position: relative;
-    height: 15%;
-    width: 100%;
-    border-top: 3px solid black;
-    background: rgb(169, 165, 165);
+    /* position: relative; */
+    height:18%;
+    width: 90%;
+    background: #025f56;
+    color: white;
+    font-weight: 400;
+    font-size: 1vw;
     display:flex;
     align-items: center;
-    justify-content: center;
-    /* -webkit-mask-image: url(mini-caption-mask.svg);
-    mask-image: url(mini-caption-mask.svg);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%; */
+    justify-content:center;
+    overflow: hidden;
+    line-height: 75%;
+    padding: 0px 5%;
+
 }
 
 .card-description {
@@ -47,15 +48,80 @@
     height: 0;
     top: 0;
     z-index: 2;
-    transition : all 1s ease-in-out;
+    transition:all 1s ease-in-out;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    font-size: 1vw;
 }
 
 .card-description div {
     word-wrap: break-word;
-    padding: 1rem;
+    margin: 1vw;
+    overflow: hidden;
+}
+
+@media screen and (max-width:800px) {
+    .mini-caption {
+        /* position: relative; */
+        height:18%;
+        width: 90%;
+        background: #025f56;
+        color: white;
+        font-weight: 400;
+        font-size: 1.5vw;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        overflow: hidden;
+        line-height: 75%;
+        padding: 0px 5%;
+    }
+    .card-description {
+        overflow: hidden;
+        position: absolute;
+        height: 0;
+        top: 0;
+        z-index: 2;
+        transition:all 1s ease-in-out;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:flex-start;
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .mini-caption {
+        /* position: relative; */
+        height:18%;
+        width: 90%;
+        background: #025f56;
+        color: white;
+        font-weight: 400;
+        font-size: 2vw;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        overflow: hidden;
+        line-height: 75%;
+        padding: 0px 5%;
+
+    }
+    .card-description {
+        overflow: hidden;
+        position: absolute;
+        height: 0;
+        top: 0;
+        z-index: 2;
+        transition:all 1s ease-in-out;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:flex-start;
+        font-size: 2.5vw;
+    }
 }
 
