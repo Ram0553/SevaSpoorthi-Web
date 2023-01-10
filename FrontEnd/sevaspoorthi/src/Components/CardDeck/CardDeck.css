@@ -28,6 +28,9 @@
         grid-gap: 3vw;
         justify-content: center;
     }
+    .programs h1{
+        font-size: 4vw;
+    }
 }
 
 @media screen and (max-width:450px) {
