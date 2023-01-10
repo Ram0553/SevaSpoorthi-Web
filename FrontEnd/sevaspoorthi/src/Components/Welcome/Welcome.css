@@ -43,3 +43,41 @@
     margin: 2vw auto;
     cursor: pointer;
 }
+
+
+@media screen and (max-width:800px) {
+    .welcome h1{
+        font-size: 3.5vw;
+    }
+    .welcome h1:after{
+        width: 15vw;
+    }
+    .welcome .story{
+        width: 70%;
+        font-size: 2vw;
+    }  
+    .welcome button{
+        border-width: 1.5px;
+        font-size: 2vw;
+        padding: 1.5vw;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .welcome h1{
+        font-size: 4vw;
+    }
+    .welcome h1:after{
+        width: 15vw;
+    }
+    .welcome .story{
+        width: 70%;
+        font-size: 2.5vw;
+    }  
+    .welcome button{
+        border-width: 1.5px;
+        font-size: 2.5vw;
+        padding: 2vw;
+    }
+}
+

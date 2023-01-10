@@ -29,9 +29,8 @@ function Carousel(props)
     });
     const carouselDots = Array(noOfSlides).fill(null).map((elem,index) => <button className="carousel-dot" key={index} onClick = {() => changeActiveSlide(index)}></button>);
     carouselDots[activeSlide] = (<button className="carousel-dot active" key={activeSlide}></button>)
-    const outerCarouselStyleSettings = props.styleSettings;
     return (
-        <div className="carousel" style={outerCarouselStyleSettings}>
+        <div className="carousel">
             <div className="leftslide" onClick={() => changeActiveSlide((activeSlide-1+noOfSlides)%noOfSlides)}>
                 <span>
                     <FontAwesomeIcon icon={faChevronLeft} className="carousel-controls" />

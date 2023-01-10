@@ -5,6 +5,7 @@
     overflow: hidden;
     user-select: none;
     font-size: 1rem;
+    height:80vh;
 }
 
 .leftslide {
@@ -81,3 +82,16 @@
     cursor: pointer;
     opacity: 0.5;
 }
+
+@media screen and (max-width:800px) {
+    .carousel {
+        height:50vh;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .carousel {
+        height:40vh;
+    }
+}
+

@@ -7,10 +7,6 @@ import { fireDb } from '../../Config/Firebase';
 
 function HomepageCarousel(props)
 {
-    const outerCarouselStyleSettings = {
-        height:"80vh"
-      };
-
     const [slides, setSlides] = useState([]);
 
     const fetchSlides = () => {
@@ -30,7 +26,7 @@ function HomepageCarousel(props)
     }, [])
     
     return (
-        <Carousel className="homepage-carousel" slides={slides} styleSettings={outerCarouselStyleSettings}/>
+        <Carousel className="homepage-carousel" slides={slides}/>
     );
 }
 
