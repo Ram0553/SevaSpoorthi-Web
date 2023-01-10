@@ -14,7 +14,7 @@ function Carousel(props)
         {
             return (
                 <div className = {carouselClass + "-slide-item"} key = {index}>
-                    <img src={slide.src} alt={slide.alt} />
+                    <img src={slide} alt="Image" />
                 </div>
             );
         }
@@ -22,7 +22,7 @@ function Carousel(props)
         {
             return (
                 <div className = {carouselClass + "-slide-item active"} key = {index}>
-                    <img src={slide.src} alt={slide.alt} />
+                    <img src={slide} alt="Image" />
                 </div>
             );
         }
