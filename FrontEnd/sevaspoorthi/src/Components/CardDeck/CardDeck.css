@@ -1,6 +1,41 @@
 .card-deck {
     display: grid;
-    grid-template-columns: repeat(3,auto);
-    grid-gap: 1rem;
-    margin:1rem 1rem;
+    grid-template-columns: 15vw 15vw 15vw 15vw 15vw;
+    grid-gap: 3vw;
+    justify-content: center;
+    margin: 3vw auto;
+}
+.programs .line{
+    display: block;
+    width: 50vw;
+    height: .2vw;
+    background: #F17211;
+    margin: 2vw auto;
+}
+
+.programs h1{
+    display: block;
+    margin: auto;
+    margin-top: 5vw;
+    width: fit-content;
+    color: #00544b;
+}
+
+@media screen and (max-width:800px) {
+    .card-deck {
+        display: grid;
+        grid-template-columns: 20vw 20vw 20vw 20vw;
+        grid-gap: 3vw;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .card-deck {
+        display: grid;
+        grid-template-columns: 25vw 25vw 25vw;
+        grid-gap: 3vw;
+        justify-content: center;
+    }
+
 }

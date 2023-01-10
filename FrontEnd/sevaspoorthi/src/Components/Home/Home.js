@@ -1,4 +1,3 @@
-import cardDeckItems from '../../CardDeckItems';
 import Auth from '../Authentication/Auth';
 import CardDeck from '../CardDeck/CardDeck';
 import Footer from '../Footer/Footer';
@@ -20,7 +19,7 @@ function Home() {
       <HomepageCarousel/>
       <Welcome/>
       <HomePageGallery/>
-      <CardDeck cardItems={cardDeckItems}/>
+      <CardDeck/>
   <div className='main'>
   Lorem Ipsum
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."

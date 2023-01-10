@@ -130,6 +130,10 @@
     color: white;
     font-weight: 400;
 }
+
+.sticky .navbar .side-menubar{
+    background-color: #025f5600;
+}
 .sticky .nav-items:hover .dropdown{
     background-color: #025f56;
     box-shadow: 2px 2px 5px 2px rgb(196, 196, 196);
@@ -171,6 +175,10 @@
         position: absolute;
         top: 0px;
         right: 0px;
+    }
+
+    .sticky .navbar .side-menubar{
+        background-color: #025f5600;
     }
 
     .navbar .nav-list{
@@ -225,6 +233,9 @@
     .menu-button{
         width: 20px;
         height: 20px;
+    }
+    .sticky  .side-menubar{
+        background-color: #025f5600;
     }
 }
 
