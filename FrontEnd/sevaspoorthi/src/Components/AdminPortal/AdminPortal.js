@@ -5,6 +5,7 @@ import React from 'react';
 import ModifyScrollNotification from './ModifyScrollNotification/ModifyScrollNotification';
 import AdminCarousel from './AdminHomeCarousel/AdminCarousel';
 import AdminOurPrograms from './AdminOurPrograms/AdminOurPrograms';
+import AdminAccess from './AdminAccess/AdminAccess';
 
 function AdminPortal()
 {
@@ -15,6 +16,7 @@ function AdminPortal()
             <AdminCarousel/>
             <AdminOurPrograms/>
             <ModifyScrollNotification/>
+            <AdminAccess/>
         </>
     );
 }
