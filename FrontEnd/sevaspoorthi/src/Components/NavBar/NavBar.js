@@ -33,7 +33,6 @@ function NavBar() {
         var navbar = document.getElementsByClassName("navbar")[0];
         if (window.pageYOffset > navHeight) {
             navbar.classList.add("sticky");
-            console.log(navHeight);
         } else {
             navbar.classList.remove("sticky");
         }
@@ -64,7 +63,7 @@ function NavBar() {
 
         <div className='nav-list'>
             <button onClick={menu} className='side-menubar-cross'>
-            <FontAwesomeIcon icon={faXmark} className='menu-button' />
+                <FontAwesomeIcon icon={faXmark} className='menu-button' />
             </button>
             <div className='nav-div'>
                 {Menuitem({currentUser,checkAdmin}).map((menu, index) => {

@@ -121,12 +121,6 @@ function AdminGallery(){
         
     }
 
-    useEffect(() => {
-      if(photos.length==0){
-        fetch();
-      }
-    }, [photos]);
-
     return (
         <div className="admingallery">
             <h3>Gallery Photo Section</h3>
