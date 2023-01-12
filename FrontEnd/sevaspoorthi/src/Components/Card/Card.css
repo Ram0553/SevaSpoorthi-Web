@@ -4,6 +4,7 @@
     overflow: hidden;
     color: white;
     cursor: pointer;
+    height: 15vw;
 }
 
 .card:hover .card-description{
@@ -22,7 +23,6 @@
     height: 82%;
     width: 100%;
     display: block;
-    
 }
 
 .mini-caption {
