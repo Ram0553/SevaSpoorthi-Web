@@ -63,6 +63,9 @@
 }
 
 @media screen and (max-width:800px) {
+    .card {
+        height: 20vw;
+    }
     .mini-caption {
         /* position: relative; */
         height:18%;
@@ -94,6 +97,9 @@
 }
 
 @media screen and (max-width:450px) {
+    .card{
+        height: 25vw;
+    }
     .mini-caption {
         /* position: relative; */
         height:18%;
