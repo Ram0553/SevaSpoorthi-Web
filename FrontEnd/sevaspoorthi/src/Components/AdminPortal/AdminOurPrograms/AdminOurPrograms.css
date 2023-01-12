@@ -1,0 +1,64 @@
+.adminprograms{
+    margin: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminprograms .editadd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminprograms .editadd .caption{
+    padding: 1vw;
+    
+}
+
+.adminprograms .editadd .description{
+    padding: 1vw;
+    height: 10vw;
+}
+
+.adminprograms h3{
+    color: #025F56;
+    font-weight: 500;
+}
+
+.adminprograms button{
+    width: fit-content;
+    margin: 1vw;
+    padding: 1vw;
+    border: none;
+    border-radius: 5px;
+    background-color: #025F56;
+    color: white;
+    cursor: pointer;
+}
+
+.adminprograms input{
+    cursor: pointer;
+}
+
+.adminprograms .images{
+    
+    display: grid;
+    grid-template-columns: 15vw 15vw 15vw 15vw;
+    justify-content: center;
+    grid-gap: 1.5vw;
+}
+
+.adminprograms img{
+    width: 15vw;
+    margin: 1vw;
+}
+.adminprograms .line{
+    display: block;
+    width: 50vw;
+    height: .2vw;
+    background: #F17211;
+    margin: 2vw auto;
+}

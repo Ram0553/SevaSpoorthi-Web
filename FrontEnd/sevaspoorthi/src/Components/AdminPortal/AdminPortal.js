@@ -4,6 +4,7 @@ import './AdminPortal.css';
 import React from 'react';
 import ModifyScrollNotification from './ModifyScrollNotification/ModifyScrollNotification';
 import AdminCarousel from './AdminHomeCarousel/AdminCarousel';
+import AdminOurPrograms from './AdminOurPrograms/AdminOurPrograms';
 
 function AdminPortal()
 {
@@ -12,6 +13,7 @@ function AdminPortal()
             <NavBar/>
             <AdminGallery/>
             <AdminCarousel/>
+            <AdminOurPrograms/>
             <ModifyScrollNotification/>
         </>
     );
