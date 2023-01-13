@@ -102,7 +102,7 @@ function ModifyScrollNotification()
                 document.getElementsByClassName("modifyOptions")[0].style.display = "none";
                 document.getElementsByClassName("addNotification")[0].style.display = "none";
                 document.getElementsByClassName("modifyType")[0].style.display = "block";
-                document.getElementsByClassName("deleteNotification")[0].style.display = "block";
+                document.getElementsByClassName("deleteNotification")[0].style.display = "flex";
                 getNotifications().then((notifications) => {
                     updateNotificationList(notifications);
                 }).catch((error) => {
@@ -179,7 +179,8 @@ function ModifyScrollNotification()
 
     return (
         <div className="modifyScrollNotification">
-            <button onClick={handleClick} className="modifyBtn" name="modifyBtn" data-hidden="true" style={{display:"block"}}> Scroll Notification </button>
+            <h3>Notification Section</h3>
+            <button onClick={handleClick} className="modifyBtn" name="modifyBtn" data-hidden="true" style={{display:"block"}}>Edit Scroll Notification </button>
             <div className="modifyType" style={{display:"none"}}>
 
                 <div className="modifyOptions" style={{display:"block"}}>
@@ -209,6 +210,7 @@ function ModifyScrollNotification()
                     <button onClick={handleClick} name="cancelBtn">Cancel</button>
                 </div>
             </div>
+            <div className="line"/>
         </div>
     );
 }
