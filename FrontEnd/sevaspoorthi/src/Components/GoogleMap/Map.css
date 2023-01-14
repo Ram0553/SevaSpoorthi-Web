@@ -1,0 +1,16 @@
+.map{
+    width: 100%;
+}
+.map .map-h2 {
+    font-size: 1.5vw;
+    padding: 10px;
+    text-align: center;
+    color: #025F56;
+    font-weight: 500;
+  }
+
+
+  .map .iframe-map{
+    height: 60vh;
+    width: 100%;
+  }
