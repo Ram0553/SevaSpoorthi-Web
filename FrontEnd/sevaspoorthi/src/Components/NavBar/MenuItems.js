@@ -5,8 +5,8 @@ function MenuItems({ items })  {
         <div>
         {items.submenu ? (
             <div className="nav-items">
-            <a href="">
-                {items.title}{' '}
+            <a>
+                {items.title}
             </a>
             <Dropdown submenus={items.submenu} />
             </div>

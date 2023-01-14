@@ -8,13 +8,9 @@ const signOut = () => {
   fireAuth.signOut();
 }
 
-const adminPortal = () => {
-  //route to admin portal
-}
-
 function Menuitem({currentUser,checkAdmin}){
 
-  return checkAdmin==true?
+  return checkAdmin===true?
   [
     {
         title: 'Home',
@@ -22,30 +18,29 @@ function Menuitem({currentUser,checkAdmin}){
       },
       {
         title: 'About',
-        url: '#',
+        url: '/AboutUs',
         
       },
       {
         title: 'Villages',
-        url: '#',
         submenu: [
           {
             title: 'Nodal Officers',
-            url: '#',
+            url: '',
           },
           {
             title: 'Map',
-            url: '#',
+            url: '',
           },
           {
             title: 'Donate',
-            url: '#',
+            url: '',
           },
         ],
       },
       {
         title: 'Donate',
-        url: '#',
+        url: '/',
         
       },
       {
@@ -65,30 +60,29 @@ function Menuitem({currentUser,checkAdmin}){
       },
       {
         title: 'About',
-        url: '#',
+        url: '/AboutUs',
         
       },
       {
         title: 'Villages',
-        url: '#',
         submenu: [
           {
             title: 'Nodal Officers',
-            url: '#',
+            url: '',
           },
           {
             title: 'Map',
-            url: '#',
+            url: '',
           },
           {
             title: 'Donate',
-            url: '#',
+            url: '',
           },
         ],
       },
       {
         title: 'Donate',
-        url: '#',
+        url: '/',
         
       },
       {
