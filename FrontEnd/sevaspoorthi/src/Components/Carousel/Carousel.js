@@ -27,6 +27,14 @@ function Carousel(props)
             );
         }
     });
+
+    useEffect(() => {
+        let timerId = setTimeout(changeActiveSlide,5000,(activeSlide+1)%noOfSlides);
+        return () => {
+            clearTimeout(timerId);
+        };
+    });
+
     const carouselDots = Array(noOfSlides).fill(null).map((elem,index) => <button className="carousel-dot" key={index} onClick = {() => changeActiveSlide(index)}></button>);
     carouselDots[activeSlide] = (<button className="carousel-dot active" key={activeSlide}></button>)
     return (
