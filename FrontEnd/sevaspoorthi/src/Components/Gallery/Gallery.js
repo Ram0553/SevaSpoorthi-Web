@@ -1,26 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { limitToFirst, onValue, orderByKey, query, ref, startAt } from "firebase/database";
-import React, { useEffect, useState } from "react"
+import { limitToFirst, onValue, orderByKey, query, ref, startAfter, startAt } from "firebase/database";
+import React, { useEffect, useState,useRef } from "react"
 import { fireDb } from "../../Config/Firebase";
 import NavBar from "../NavBar/NavBar";
 import ViewImage from "../ViewImageList/ViewImage";
-import { useNavigate, useParams } from "react-router-dom";
-
-function fetchPhotos(setPhotos,key,path){
-    const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(), startAt(key.toString()),limitToFirst(5));
-    onValue(recentPostsRef,(snapshot)=>{
-        if(snapshot.exists()){
-            snapshot.forEach((photo)=>{
-                const pid=photo.key;
-                const plink=photo.child("Link").val();
-                const obj = {photoId:pid,photoLink:plink};
-                setPhotos(photos=>[...photos,obj]);
-            })
-        }
-    },{onlyOnce:true})
-    return;
-}
+import { useParams } from "react-router-dom";
 
 function open(index,setCurPhoto){
     setCurPhoto(index)
@@ -29,26 +12,78 @@ function open(index,setCurPhoto){
 }
 
 function Gallery(){
-    function More(){
-        navigate("/Gallery/"+path+"/"+photos[photos.length-1].photoId);
-        navigate(0);
-    }
 
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
+    const [loading,setLoading] = useState(0);
     const {path,key} = useParams();
-    const navigate = useNavigate();
-
+    const nextImg = useRef("");
 
     useEffect(() => {
-        fetchPhotos(setPhotos,key,path)
-    }, [key])
-
-    useEffect(()=>{
+        fetchPhotos(setPhotos,key,path);
         if(photos.length>0){
             setCurPhoto(0);
         }
-    },[photos])
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+      if(loading!==2 && curPhoto === photos.length-1){
+        fetchMorePhotos();
+      }
+    }, [curPhoto]);
+    
+
+    const handleScroll = () => {
+        if(loading!==2 && Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight){
+            fetchMorePhotos();
+        }
+    };
+
+    function fetchPhotos(){
+        const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(), startAt(key.toString()),limitToFirst(15));
+        onValue(recentPostsRef,(snapshot)=>{
+            if(snapshot.exists()){
+                snapshot.forEach((photo)=>{
+                    const pid=photo.key;
+                    const plink=photo.child("Link").val();
+                    const obj = {photoId:pid,photoLink:plink};
+                    setPhotos(photos=>[...photos,obj]);
+                    nextImg.current = pid;
+                })
+            }
+        },{onlyOnce:true})
+        return;
+    }
+
+    function fetchMorePhotos(){
+        if(loading!==0)return;
+        setLoading(1);
+        const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(), startAfter(nextImg.current.toString()),limitToFirst(10));
+        onValue(recentPostsRef,(snapshot)=>{
+            if(snapshot.exists()){
+                snapshot.forEach((photo)=>{
+                    const pid=photo.key;
+                    const plink=photo.child("Link").val();
+                    const obj = {photoId:pid,photoLink:plink};
+                    setPhotos(photos=>[...photos,obj]);
+                    nextImg.current = pid;
+                });
+            setLoading(0);
+            }
+            else{
+               window.removeEventListener('scroll', handleScroll);
+               setLoading(2);
+            }
+        },{onlyOnce:true})
+        return;
+    }
+    
+
     return (
         <>
             <NavBar/>
@@ -59,14 +94,18 @@ function Gallery(){
                 <div className="line"/>
                 <div className="tileview">
                     <div className="images">
-                        {photos.map((imgSrc,key) => (key<5?<img src={imgSrc.photoLink} key={key} alt="Image"  onClick={()=>open(key,setCurPhoto)}/>:""))}
+                        {photos.map((imgSrc,key) => (<img src={imgSrc.photoLink} key={key} alt="Image"  onClick={()=>open(key,setCurPhoto)}/>))}
                     </div>
                     
-                    {photos.length>4?<h6 onClick={More}>More  <FontAwesomeIcon icon={faArrowRight}/></h6>:""}
                 </div>
                 <div>
                     {photos.length>0?<ViewImage photos={photos} curPhoto={curPhoto} setCurPhoto={setCurPhoto}/>:""}
                 </div>
+                {loading==1?
+                    <div className="loading">
+                        Loading
+                    </div>:""
+                }
                 <div className="line"/>
             </div>
         </>
