@@ -16,8 +16,8 @@ function AdminCarousel(){
     const [selectedPhotos,updateSelectedPhotos] = useState([]);
 
     const fetch = () => {
-        const recentPostsRef =nextKey!=""? query(ref(fireDb, "Photos/HomepageCarousel"),orderByKey(), startAfter(nextKey.toString()),limitToFirst(20))
-                                         : query(ref(fireDb, "Photos/HomepageCarousel"),orderByKey(), limitToFirst(20));
+        const recentPostsRef =nextKey!=""? query(ref(fireDb, "Photos/HomepageCarousel"),orderByKey(), startAfter(nextKey.toString()))
+                                         : query(ref(fireDb, "Photos/HomepageCarousel"),orderByKey());
         get(recentPostsRef).then((snapshot)=>{
             if(snapshot.exists()){
                 snapshot.forEach((photo)=>{
