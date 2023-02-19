@@ -18,8 +18,8 @@ function AdminOurPrograms(){
     const [selectedPrograms,updateSelectedPrograms] = useState([]);
 
     const fetch = () => {
-        const recentPostsRef =nextKey!=""? query(ref(fireDb, "Photos/OurPrograms"),orderByKey(), startAfter(nextKey.toString()),limitToFirst(20))
-                                         : query(ref(fireDb, "Photos/OurPrograms"),orderByKey(), limitToFirst(20));
+        const recentPostsRef =nextKey!=""? query(ref(fireDb, "Photos/OurPrograms"),orderByKey(), startAfter(nextKey.toString()))
+                                         : query(ref(fireDb, "Photos/OurPrograms"),orderByKey());
         get(recentPostsRef).then((snapshot)=>{
             if(snapshot.exists()){
                 snapshot.forEach((prog)=>{
