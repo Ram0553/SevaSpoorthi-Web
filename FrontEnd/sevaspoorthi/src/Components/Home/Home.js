@@ -7,6 +7,7 @@ import NavBar from '../NavBar/NavBar';
 import ScrollNotification from '../ScrollNotification/ScrollNotification';
 import Welcome from '../Welcome/Welcome';
 import { AuthProvider } from '../../Context/AuthContext';
+import News from '../News/News';
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
         <ScrollNotification/>
         <HomepageCarousel/>
         <Welcome/>
+        <News/>
         <HomePageGallery/>
         <CardDeck/>
         <Footer/>
