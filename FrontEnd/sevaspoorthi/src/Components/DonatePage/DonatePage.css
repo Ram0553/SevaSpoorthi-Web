@@ -1,0 +1,20 @@
+.donateCarousel {
+    margin: 10px 10%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    gap: 10px 10px;
+    align-items: center;
+}
+
+@media only screen and (max-width:1023px) {
+    .donateCarousel {
+        grid-template-columns: repeat(2,auto);
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .donateCarousel {
+        grid-template-columns: repeat(1,auto);
+    }
+}
