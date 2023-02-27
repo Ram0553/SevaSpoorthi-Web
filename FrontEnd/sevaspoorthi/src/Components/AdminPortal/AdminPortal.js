@@ -6,6 +6,7 @@ import ModifyScrollNotification from './ModifyScrollNotification/ModifyScrollNot
 import AdminCarousel from './AdminHomeCarousel/AdminCarousel';
 import AdminOurPrograms from './AdminOurPrograms/AdminOurPrograms';
 import AdminAccess from './AdminAccess/AdminAccess';
+import AdminNews from './AdminNews/AdminNews';
 
 function AdminPortal()
 {
@@ -13,6 +14,7 @@ function AdminPortal()
         <>
             <NavBar/>
             <AdminGallery/>
+            <AdminNews/>
             <AdminCarousel/>
             <AdminOurPrograms/>
             <ModifyScrollNotification/>
