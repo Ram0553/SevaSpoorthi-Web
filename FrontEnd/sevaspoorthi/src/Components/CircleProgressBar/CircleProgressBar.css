@@ -1,0 +1,29 @@
+.circleProgressBar {
+    position: relative;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #d6f0d6;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background 2s linear;
+    margin-right: 1rem;
+  }
+
+.circleProgressBar::before{
+    content: "";
+    position: relative;
+    height:80%;
+    width:80%;
+    background-color:white;
+    border-radius: 50%;
+}
+
+.circle {
+    position: absolute;
+    font-size:0.84rem;
+    box-sizing: content-box;
+    border-radius: 50%;
+}

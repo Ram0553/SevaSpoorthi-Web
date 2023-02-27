@@ -34,13 +34,13 @@ function Menuitem({currentUser,checkAdmin}){
           },
           {
             title: 'Donate',
-            url: '',
+            url: '/Donate',
           },
         ],
       },
       {
         title: 'Donate',
-        url: '/',
+        url: '/Donate',
         
       },
       {
