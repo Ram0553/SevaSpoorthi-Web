@@ -1,4 +1,4 @@
-import { child, get, ref } from "firebase/database";
+import { child, get, limitToLast, onValue, query, ref } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { fireDb } from "../../Config/Firebase";
 import { EditorState, convertToRaw } from 'draft-js';
@@ -9,15 +9,16 @@ import "./News.css";
 import TextEditor from "../TextEditor/TextEditor";
 
 function News(){
-    const [latest, setlatest] = useState([])
+    const [latest, setlatest] = useState([]);
     const [archive, setarchive] = useState([]);
+    var allNews=[];
     // const [editorState,setEditorState] = useState(EditorState.createEmpty());
     const navigate = useNavigate();
 
     function fetchNews(){
-        get(child(ref(fireDb),"News")).then((snapshot)=>{
+        const recentPostsRef = query(ref(fireDb, "News"),limitToLast(200000));
+        onValue(recentPostsRef,(snapshot)=>{
             if(snapshot.exists()){
-                var count = 0;
                 snapshot.forEach((news)=>{
                     var images=[]
                     news.child("images").forEach((img)=>{
@@ -30,14 +31,22 @@ function News(){
                         "date":news.child("date").val(),
                         "images":images
                     }
-                    if(count<5){
-                        setlatest(latest=>[...latest,newsObj]);
+                    allNews.push(newsObj);
+                });
+                allNews.reverse();
+                console.log(allNews);
+                var latestNews=[],archiveNews=[];
+                for(var i in allNews){
+                    console.log(allNews[i]["heading"]);
+                    if(i<5){
+                        latestNews.push(allNews[i]);
                     }
                     else{
-                        setarchive(archive=>[...archive,newsObj]);
+                        archiveNews.push(allNews[i]);
                     }
-                    count++;
-                })
+                }
+                setarchive(archiveNews);
+                setlatest(latestNews);
             }
         });
         return;
@@ -81,7 +90,7 @@ function News(){
                             {archive.map((news, index) => {
                                 return (
                                     <div>
-                                        <p key={index} name="archive" data-key={index} onClick={handleClick}>{news["heading"]+`\nUploaded on : ${news["date"]}`}</p>
+                                        <p key={index} name="archive" data-key={index} onClick={handleClick}>{news["heading"]}<br/>{`Uploaded on : ${news["date"]}`}</p>
                                     </div>
                                 )  
                             })}
