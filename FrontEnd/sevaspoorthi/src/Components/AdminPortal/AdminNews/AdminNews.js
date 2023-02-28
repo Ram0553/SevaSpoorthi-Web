@@ -15,47 +15,50 @@ function AdminNews(){
     const [loading,setLoading] = useState(0);
     const {checkAdmin}  = useContext(AuthContext);
     const [buttonState,setButtonState] = useState("");
-    const [photos,setPhotos] = useState([]);
-    const [nextKey,setNextKey] = useState("");
-    const [selectedPhotos,updateSelectedPhotos] = useState([]);
+    const [news,setNews] = useState([]);
+    const [selectedNews,updateSelectedNews] = useState([]);
     const [editorState,setEditorState] = useState(EditorState.createEmpty());
     const [headingFlag,setHeadingFlag]=useState(false);
     const headingErr = "Heading Cannot be Empty";
 
     const fetch = () => {
-        const recentPostsRef =nextKey!=""? query(ref(fireDb, "Photos/GlobalPhotos"),orderByKey(), startAfter(nextKey.toString()))
-                                         : query(ref(fireDb, "Photos/GlobalPhotos"),orderByKey());
+        const recentPostsRef =query(ref(fireDb, "News/"));
         get(recentPostsRef).then((snapshot)=>{
             if(snapshot.exists()){
-                snapshot.forEach((photo)=>{
-                    const pid=photo.key;
-                    const plink=photo.child("Link").val();
-                    const obj = {photoId:pid,photoLink:plink};
-                    setNextKey(pid);
-                    setPhotos(photos=>[...photos,obj]);
+                snapshot.forEach((news)=>{
+                    const nid=news.key;
+                    const heading=news.child("heading").val();
+                    const date=news.child("date").val();
+                    const obj = {heading:heading,date:date,id:nid};
+                    setNews(nnews=>[...nnews,obj]);
                 });
             }
         });
     }
 
-    const deleteImages = (async () => {
-        var deleteImages = {};
-        for (var key in selectedPhotos)
+    const deleteNews = (async () => {
+        var deleteNews = {};
+        for (var key in selectedNews)
         {
-            deleteImages[selectedPhotos[key]] = null;
+            deleteNews[selectedNews[key]] = null;
         }
-        await update(ref(fireDb,"Photos/GlobalPhotos"),deleteImages);
+        await update(ref(fireDb,"News/"),deleteNews);
 
-        for (var key in selectedPhotos)
+        for (var key in selectedNews)
         {
-            const desertRef = sref(fireStorage, 'GlobalPhotos/'+selectedPhotos[key]);
+            const desertRef = sref(fireStorage, 'NewsPhotos/'+selectedNews[key]);
             await listAll(desertRef).then((dir)=>{
-                dir.items.forEach((fileref)=>{
-                    deleteObject(sref(fireStorage, desertRef.fullPath+"/"+fileref.name));
-                })
+                dir.prefixes.forEach(async(folderref)=>{
+                    await listAll(folderref).then((sdir)=>{
+                        sdir.items.forEach((filerefs)=>{
+                            deleteObject(sref(fireStorage, folderref.fullPath+"/"+filerefs.name));
+                        });
+                    });
+                    
+                });
             });
         }
-        alert("Deleted the selected images");
+        alert("Deleted the selected news");
     });
 
     const handleSubmit = async (event) =>{
@@ -69,13 +72,13 @@ function AdminNews(){
                 break;
             
             case "Checkbox" :
-                const photoKey = event.target.getAttribute("data-key");
+                const newsKey = event.target.getAttribute("data-key");
                 const isChecked = event.target.checked;
                 if(isChecked){
-                    updateSelectedPhotos(selectedPhotos => [...selectedPhotos,photos[photoKey].photoId]);
+                    updateSelectedNews(selectedNews => [...selectedNews,news[newsKey].id]);
                 }
                 else{
-                    updateSelectedPhotos(selectedPhotos => (selectedPhotos.filter(item => item !== photos[photoKey].photoId)));
+                    updateSelectedNews(selectedNews => (selectedNews.filter(item => item !== news[newsKey].id)));
                 }
                 break;
             
@@ -97,35 +100,32 @@ function AdminNews(){
                 break;
 
             case "Remove" :
-                deleteImages().then(()=>{
-                    console.log("Selected Images Deleted");
-                    setNextKey("");
-                    setPhotos([]);
-                    updateSelectedPhotos([]);
+                deleteNews().then(()=>{
+                    window.location.reload(true);
                 });
                 break;
 
             case "Upload" :
                 var downloadLinks = {}
+                const id = push(ref(fireDb)).key;
                 for(let i=0;i<files.length;i++){
                     if(i==0){
                         setLoading(1);
                     }
                     try {
                         const key = push(ref(fireDb)).key;
-                        await uploadBytes(sref(fireStorage,"NewsPhotos/"+`${key}`+"/"+`${files[i].name}`),files[i]);
-                        const url = await getDownloadURL(sref(fireStorage,"NewsPhotos/"+`${key}`+"/"+`${files[i].name}`));
+                        await uploadBytes(sref(fireStorage,"NewsPhotos/"+`${id}`+"/"+`${key}`+"/"+`${files[i].name}`),files[i]);
+                        const url = await getDownloadURL(sref(fireStorage,"NewsPhotos/"+`${id}`+"/"+`${key}`+"/"+`${files[i].name}`));
                         downloadLinks[key]=url;
-                        // await set(ref(fireDb,"Photos/GlobalPhotos/"+key),{"Link":url});
                     } catch (error) {
                         alert(`Failed to upload :- ${files[i].name} due to ${error}`);
                     }
                 }
-                const id = push(ref(fireDb)).key;
                 var today = new Date();
                 var date = today.getDate()+ '-' + (today.getMonth() + 1) + '-' + today.getFullYear() ;
                 await set(ref(fireDb,`News/${id}/`),{"content":draftToHtml(convertToRaw(editorState.getCurrentContent())),"date":date,"heading":heading,"images":downloadLinks});
                 setLoading(0);
+                window.location.reload(true);
                 break;
 
             default :
@@ -140,7 +140,7 @@ function AdminNews(){
             <div>
                 {checkAdmin==true && buttonState==""?<button onClick={handleSubmit} name="Edit">Edit News</button>:""}
                 {buttonState=="Edit"?<button onClick={handleSubmit} name="Add">Add News</button>:""}
-                {buttonState=="Edit"?<button onClick={handleSubmit} name="Edit">Edit News</button>:""}
+                {buttonState=="Edit"?<button onClick={handleSubmit} name="Delete">Delete News</button>:""}
 
                 {buttonState=="EditAdd"?
                     <div className="news-add">
@@ -158,11 +158,11 @@ function AdminNews(){
             </div>
             {buttonState=="EditDelete"?
                 <>
-                <div className="images">
-                    {photos.map((imgSrc,key) => 
-                        (<div>
+                <div >
+                    {news.map((nnew,key) => 
+                        (<div className="news" >
                             <input type="checkbox" name="Checkbox" data-key={key} onClick={handleSubmit}/>
-                            <img src={imgSrc.photoLink} key={key}/>
+                            <h3 key={key}>{nnew.heading}<br/>{"Uploaded on:- "+nnew.date}</h3>
                         </div>
                     ))}
                 </div> 
