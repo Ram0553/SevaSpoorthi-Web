@@ -57,13 +57,13 @@
 .news .line{
     display: block;
     width: .2vw;
-    height: 30vh;
+    height: 40vh;
     background: #F17211;
 }
 
 .news .scroll-news-block{
     display: block;
-    height: 35vh;
+    height: 45vh;
     width: 27vw;
     margin: auto auto;
     margin-bottom: 1vw;
