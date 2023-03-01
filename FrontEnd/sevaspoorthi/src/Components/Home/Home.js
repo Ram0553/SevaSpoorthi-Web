@@ -8,6 +8,7 @@ import ScrollNotification from '../ScrollNotification/ScrollNotification';
 import Welcome from '../Welcome/Welcome';
 import { AuthProvider } from '../../Context/AuthContext';
 import News from '../News/News';
+import DonateHomePage from '../DonateHomePage/DonateHomePage';
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
         <Welcome/>
         <News/>
         <HomePageGallery/>
+        <DonateHomePage/>
         <CardDeck/>
         <Footer/>
       </div>

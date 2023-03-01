@@ -3,6 +3,7 @@ import DonateCard from '../DonateCard/DonateCard';
 import { fireDb } from '../../Config/Firebase';
 import { ref,get } from "firebase/database";
 import { useEffect, useState } from 'react';
+import NavBar from '../NavBar/NavBar';
 
 async function getDonateCards(setDonateCards)
 {
@@ -29,11 +30,16 @@ function DonatePage()
     },[]);
     
     return (
-        <div className="donateCarousel">
-            {donateCards.map((donateDetails) => {
-                return <DonateCard details={donateDetails} key={donateDetails.id}/>
-            })}
+        <div className="donationComponent">
+            <NavBar/>
+            <h1> Donations </h1>
+            <div className="donateCarousel">
+                {donateCards.map((donateDetails) => {
+                    return <DonateCard details={donateDetails} key={donateDetails.id}/>
+                })}
+            </div>
         </div>
+        
     );
 }
 

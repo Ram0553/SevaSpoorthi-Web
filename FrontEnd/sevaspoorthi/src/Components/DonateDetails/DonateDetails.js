@@ -8,6 +8,7 @@ import { useState,useEffect } from 'react';
 import { fireDb } from '../../Config/Firebase';
 import { ref,child,get } from 'firebase/database';
 import { Helmet } from "react-helmet";
+import NavBar from '../NavBar/NavBar';
 
 async function getDonateDetails(id,setDetails,setMetaTags) {
     const donateDetailsRef = ref(fireDb,"DonateDetails");
@@ -93,64 +94,68 @@ function DonateDetails(props)
 
     // const [editorState,onEditorStateChange] = useState(EditorState.createEmpty());
     return (
-        <div className="donateDetails">
-            <Helmet>
-                {metaTags}
-            </Helmet>
-            <div className="donateDetailsHeading">
-                {details.heading}  
-            </div>
-            <div className="donateDetailsBody">
-                <div className="donateDetailsContent">
-                    <div className="contentImage">
-                        <img src={details.contentImage} alt={details.contentAlt} />
-                    </div>
-                    <div className="donateDetailsAbout">
-
-                    </div>
-                    <div className="donateDetailsDocuments">
-                        {/* documents proof */}
-                    </div>
-                    <div className="donateDetailsUpdates">
-                        {/* details updates */}
-                    </div>
-                    <div className="donateDetailsComments">
-                        {/* comments */}
-                    </div>
+        <div>
+            <NavBar/>
+            <div className="donateDetails">
+                <Helmet>
+                    {metaTags}
+                </Helmet>
+                <div className="donateDetailsHeading">
+                    {details.heading}  
                 </div>
-                <div className="donateQuickDetails">
-                    <div>
-                        <a href={window.location.href}><button className="donateSolidBtn"> Donate Now </button></a>
-                    </div>
-                    <div> 
-                        {/* types of payment options available */}
-                    </div>
-                    <div>
-                        {/* share btn */}
-                    </div>
-                    <div className="donateDetailsStats">
-                        {/* donateStats */}
-                        <div className="progressDetails">
-                            <CircleProgressBar details={{id:id,raisedAmt:details.raisedAmt,requiredAmt:details.requiredAmt}} key={id}/>
-                            <div> <strong> &#8377;{details.raisedAmt} </strong> raised out of <strong> &#8377;{details.requiredAmt} </strong> </div>
+                <div className="donateDetailsBody">
+                    <div className="donateDetailsContent">
+                        <div className="contentImage">
+                            <img src={details.contentImage} alt={details.contentAlt} />
                         </div>
-                        <div className="donateStats">
-                            <p>
-                                <div> ⏱<strong> {details.daysLeft} </strong> Days Left </div>
-                                <div> 💖<strong> {details.supportersCount} </strong> Supportors </div>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="contactDetails">
-                        {/* contact details of campaigner */}
+                        <div className="donateDetailsAbout">
 
+                        </div>
+                        <div className="donateDetailsDocuments">
+                            {/* documents proof */}
+                        </div>
+                        <div className="donateDetailsUpdates">
+                            {/* details updates */}
+                        </div>
+                        <div className="donateDetailsComments">
+                            {/* comments */}
+                        </div>
                     </div>
-                    <div className="topDonors">
-                        {/* list of top donors */}
+                    <div className="donateQuickDetails">
+                        <div>
+                            <a href={window.location.href}><button className="donateSolidBtn"> Donate Now </button></a>
+                        </div>
+                        <div> 
+                            {/* types of payment options available */}
+                        </div>
+                        <div>
+                            {/* share btn */}
+                        </div>
+                        <div className="donateDetailsStats">
+                            {/* donateStats */}
+                            <div className="progressDetails">
+                                <CircleProgressBar details={{id:id,raisedAmt:details.raisedAmt,requiredAmt:details.requiredAmt}} key={id}/>
+                                <div> <strong> &#8377;{details.raisedAmt} </strong> raised out of <strong> &#8377;{details.requiredAmt} </strong> </div>
+                            </div>
+                            <div className="donateStats">
+                                <p>
+                                    <div> ⏱<strong> {details.daysLeft} </strong> Days Left </div>
+                                    <div> 💖<strong> {details.supportersCount} </strong> Supportors </div>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="contactDetails">
+                            {/* contact details of campaigner */}
+
+                        </div>
+                        <div className="topDonors">
+                            {/* list of top donors */}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     );
 }
 

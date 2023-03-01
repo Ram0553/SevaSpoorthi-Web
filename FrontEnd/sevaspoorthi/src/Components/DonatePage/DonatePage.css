@@ -18,3 +18,15 @@
         grid-template-columns: repeat(1,auto);
     }
 }
+
+.donationComponent {
+    text-align: center;
+}
+
+.donationComponent h1 {
+    display: block;
+    margin: auto;
+    margin: 2vw auto;
+    width: fit-content;
+    color: #00544b;
+}
