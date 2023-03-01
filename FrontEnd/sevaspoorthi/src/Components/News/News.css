@@ -57,18 +57,106 @@
 .news .line{
     display: block;
     width: .2vw;
-    height: 30vh;
+    height: 40vh;
     background: #F17211;
 }
 
 .news .scroll-news-block{
     display: block;
-    height: 35vh;
+    height: 45vh;
     width: 27vw;
     margin: auto auto;
     margin-bottom: 1vw;
     padding-left: 1.5vw;
     padding-right: 1.5vw;
     overflow-y: auto;
+}
+
+
+@media screen and (max-width:800px) {
+
+    .news .news-latest{
+        width: 40vw;
+        height: fit-content;
+    }
+    
+    .news .news-archive{
+        width: 40vw;
+        height: fit-content;
+    }
+    
+    .news .line{
+        display: block;
+        width: .2vw;
+        height: 40vh;
+        background: #F17211;
+    }
+    
+    .news .scroll-news-block{
+        display: block;
+        height: 45vh;
+        width: 37vw;
+        margin: auto auto;
+        margin-bottom: 1vw;
+        padding-left: 1.5vw;
+        padding-right: 1.5vw;
+        overflow-y: auto;
+    }
+    .news-block p{
+        text-align: justify;
+        font-weight: 600;
+        font-style: oblique;
+        font-size: 15px;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+
+    .news .news-block{
+        display: flex;
+        flex-direction: column;
+        background-color: bisque;
+        width: fit-content;
+        height: fit-content;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .news .news-latest{
+        width: 65vw;
+        height: fit-content;
+    }
+    
+    .news .news-archive{
+        width: 65vw;
+        height: fit-content;
+    }
+    
+    .news .line{
+        display: block;
+        width: 55vw;
+        height: 0.4vh;
+        background: #F17211;
+    }
+    
+    .news .scroll-news-block{
+        display: block;
+        height: 45vh;
+        width: 62vw;
+        margin: auto auto;
+        margin-bottom: 2vw;
+        padding-left: 1.5vw;
+        padding-right: 1.5vw;
+        overflow-y: auto;
+    }
+    .news-block p{
+        text-align: justify;
+        font-weight: 600;
+        font-style: oblique;
+        font-size: 15px;
+    }
+
 }
 
