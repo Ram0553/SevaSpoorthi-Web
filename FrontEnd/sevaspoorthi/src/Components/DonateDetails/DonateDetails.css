@@ -18,7 +18,8 @@
 }
 
 .donateDetailsContent {
-    flex-basis: 67%;
+    /* flex-basis: 67%; */
+    width:67%;
     padding:0 10px;
     background-color: rgb(237, 237, 248);
     text-align: center;
@@ -27,7 +28,8 @@
 
 .donateQuickDetails {
     text-align: center;
-    flex-basis: 33%;
+    /* flex-basis: 33%; */
+    width:33%;
     padding: 0 10px;
 }
 
@@ -67,4 +69,17 @@
     font-size: x-large;
     background: rgb(237, 237, 248);
     border-radius: 8px;
+}
+
+@media only screen and (max-width:700px) {
+    .donateDetailsBody {
+        flex-direction: column;
+    }
+    .donateDetailsContent {
+        width: 100%;
+    }
+
+    .donateQuickDetails {
+        width: 100%;
+    }
 }
