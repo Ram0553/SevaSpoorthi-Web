@@ -1,0 +1,80 @@
+.modifyDonate{
+    margin: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modifyDonate h3{
+    color: #025F56;
+    font-weight: 500;
+}
+
+.modifyDonate button{
+    width: fit-content;
+    margin: 1vw;
+    padding: 1vw;
+    border: none;
+    border-radius: 5px;
+    background-color: #025F56;
+    color: white;
+    cursor: pointer;
+}
+
+.deleteDonateControls{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addDonateControls{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donationList{
+    margin: 10px 10%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 10px 10px;
+    align-items: center;
+}
+
+.modifyDonate .line{
+    display: block;
+    width: 50vw;
+    height: .2vw;
+    background: #F17211;
+    margin: 2vw auto;
+}
+
+.donateCardInputDetails {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.donateCardInputDetails label{
+    text-align: center;
+}
+
+.donateDetailsInput {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.donateDetailsInput label{
+    text-align: center;
+}
