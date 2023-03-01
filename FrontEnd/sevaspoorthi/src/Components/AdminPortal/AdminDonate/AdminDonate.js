@@ -1,9 +1,12 @@
 import './AdminDonate.css';
 import { useState } from 'react';
 import { fireDb } from '../../../Config/Firebase';
-import { ref,push,get,update } from 'firebase/database';
+import { ref,push,get,update,child,set } from 'firebase/database';
 import DonateCard from '../../DonateCard/DonateCard';
 import TextEditor from '../../TextEditor/TextEditor';
+import { EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { convertToRaw } from 'draft-js';
 
 function AdminDonate()
 {
@@ -25,16 +28,35 @@ function AdminDonate()
     });
     const [donationList,updateDonationList] = useState([]);
     const [selectedDonations,updateSelectedDonations] = useState([]);
+    const [editorState,setEditorState] = useState(EditorState.createEmpty());
 
     const addDonation = (async () => {
-        // await push(ref(fireDb,"Donate"),{
-
-        // });
+        const donateData = {
+            createdBy:donateDetails.createdBy,
+            daysLeft:donateDetails.daysLeft,
+            donateCardHeading:donateDetails.donateCardHeading,
+            imageAlt:donateDetails.donateCardImageAlt,
+            imageSrc:donateDetails.donateCardImageSrc,
+            raisedAmt:donateDetails.raisedAmt,
+            requiredAmt:donateDetails.requiredAmt,
+            supportersCount:donateDetails.supportersCount
+        };
+        const donateDetailsData = {
+            about: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+            contentAlt:donateDetails.donateDetailImageAlt,
+            contentImage:donateDetails.donateDetailImageSrc,
+            heading:donateDetails.donateCardHeading,
+            metaDescription:donateDetails.metaDescription,
+            previewDescription:donateDetails.previewDescription,
+            previewImage:donateDetails.previewImageSrc
+        };
+        const donateChildRef = await push(ref(fireDb,"Donate"),donateData);
+        const key = donateChildRef.key;
+        await set(child(ref(fireDb,"DonateDetails"),key.toString()),donateDetailsData);
     });
 
     const convertToDonationDivList = ((donations) => {
-        var donationDivList = [],index = 0;
-        var index = 0;
+        var donationDivList = [];
         for(var i=0;i<donations.length;i++) {
             donationDivList.push(
                 <div className="donationBox" key={donations[i].id}>
@@ -51,7 +73,6 @@ function AdminDonate()
                     </div>
                 </div>
             );
-            index++;
         }
         return donationDivList;
     });
@@ -71,7 +92,7 @@ function AdminDonate()
         }).catch((error) => {
             console.error(error);
         });
-        console.log(donations);
+        // console.log(donations);
         return convertToDonationDivList(donations);
     });
 
@@ -89,9 +110,25 @@ function AdminDonate()
         document.getElementsByClassName("addDonate")[0].style.display = "none";
         document.getElementsByClassName("deleteDonate")[0].style.display = "none";    
         document.getElementsByClassName("modifyDonateType")[0].style.display = "block";
-        updateDonateDetails({});
+        updateDonateDetails(donateDetails => ({...donateDetails,
+            donateCardHeading:"",
+            createdBy:"",
+            donateCardImageSrc:"",
+            donateCardImageAlt:"",
+            daysLeft:0,
+            raisedAmt:0,
+            requiredAmt:0,
+            supportersCount:0,
+            about:"",
+            donateDetailImageSrc:"",
+            donateDetailImageAlt:"",
+            metaDescription:"",
+            previewDescription:"",
+            previewImageSrc:""
+        }));
         updateDonationList([]);
         updateSelectedDonations([]);
+        setEditorState(EditorState.createEmpty());
     });
     
     const handleClick = ((event) => {
@@ -130,16 +167,11 @@ function AdminDonate()
                 break;
 
             case "addBtn":
-                // if(content.length > 0) {
-                //     addDonation().then(() => {
-                //         console.log("donation added")
-                //     }).catch((error) => {
-                //         console.log(error);
-                //     });
-                // }
-                // else {
-                //     console.log("No content");
-                // }
+                addDonation().then(() => {
+                    console.log("donation added")
+                }).catch((error) => {
+                    console.log(error);
+                });
                 setDefaultSettings();
                 break;
             
@@ -171,14 +203,14 @@ function AdminDonate()
                 break;
             
             case "checkboxBtn":
-                const notificationKey = event.target.getAttribute("data-key");
+                const donationKey = event.target.getAttribute("data-key");
                 const isChecked = event.target.checked;
                 
                 if(isChecked) {
-                    // updateSelectedDonations(selectedNotifications => selectedNotifications.concat(notificationKey));
+                    updateSelectedDonations(selectedDonations => selectedDonations.concat(donationKey));
                 }
                 else {
-                    // updateSelectedDonations(selectedNotifications => (selectedNotifications.filter(item => item !== notificationKey)));
+                    updateSelectedDonations(selectedDonations => (selectedDonations.filter(item => item !== donationKey)));
                 }
                 break;
 
@@ -188,12 +220,8 @@ function AdminDonate()
     });
 
     const handleChange = ((event) => {
-        // if(event.target.name === "content"){
-        //     updateContent(event.target.value);
-        // }
-        // else if(event.target.name === "url"){
-        //     updateUrl(event.target.value);
-        // }
+        const targetName = event.target.name;
+        updateDonateDetails(donateDetails => ({...donateDetails,[targetName]:event.target.value}));
     });
 
     return (
@@ -208,16 +236,6 @@ function AdminDonate()
                 </div>
 
                 <div className="addDonate" style={{display:"none"}}>
-                    {/* <label>
-                        Brief Description <br/>
-                        <textarea value={content} name="content" onChange={handleChange} placeholder="Type the brief description of the notification here"/>
-                    </label>
-                    <br/>
-                    <label>
-                        Detailed Description URL <br/>
-                        <input type="text" name="url" value={url} onChange={handleChange} placeholder="Type the URL of detailed description of the notification here"/> 
-                    </label> 
-                    <br/> */}
                     <div className="addDonateControls">
                         <button onClick={handleClick} name="addBtn">Add Donate</button>
                         <button onClick={handleClick} name="cancelBtn">Cancel</button>    
@@ -227,52 +245,48 @@ function AdminDonate()
                             <h3> Donate Card Details </h3>
                             <label>
                                 Donation Heading <br />
-                                <input type="text" value={donateDetails.donateCardHeading} onChange={handleChange} placeholder="Type the donation heading here"/>
+                                <input type="text" name="donateCardHeading" value={donateDetails.donateCardHeading} onChange={handleChange} placeholder="Type the donation heading here"/>
                             </label>
                             <label>
                                 Created By <br />
-                                <input type="text" value={donateDetails.createdBy} onChange={handleChange} placeholder="Type the donation creator here"/>
+                                <input type="text" name="createdBy" value={donateDetails.createdBy} onChange={handleChange} placeholder="Type the donation creator here"/>
                             </label>
                             <label>
                                 Donate Card Image <br />
-                                <input type="text" value={donateDetails.donateCardImageSrc} onChange={handleChange} placeholder="Type the url of DonateCard photo"/>
+                                <input type="text" name="donateCardImageSrc" value={donateDetails.donateCardImageSrc} onChange={handleChange} placeholder="Type the url of DonateCard photo"/>
                             </label>
                             <label>
                                 Donate Card Image Alternate <br />
-                                <input type="text" value={donateDetails.donateCardImageAlt} onChange={handleChange} placeholder="Type the DonateCard photo alternate"/>
+                                <input type="text" name="donateCardImageAlt" value={donateDetails.donateCardImageAlt} onChange={handleChange} placeholder="Type the DonateCard photo alternate"/>
                             </label>
                             <label>
                                 Days Left <br />
-                                <input type="number" value={donateDetails.daysLeft} onChange={handleChange} />
+                                <input type="number" name="daysLeft" value={donateDetails.daysLeft} onChange={handleChange} />
                             </label>
                             <label>
                                 Raised Amount <br />
-                                <input type="number" value={donateDetails.raisedAmt} onChange={handleChange} />
+                                <input type="number" name="raisedAmt" value={donateDetails.raisedAmt} onChange={handleChange} />
                             </label>
                             <label>
                                 Required Amount <br />
-                                <input type="number" value={donateDetails.requiredAmt} onChange={handleChange} />
+                                <input type="number" name="requiredAmt" value={donateDetails.requiredAmt} onChange={handleChange} />
                             </label>
                             <label>
                                 Supporters Count <br />
-                                <input type="number" value={donateDetails.requiredAmt} onChange={handleChange} />
-                            </label>
-                            <label>
-                                Required Amount <br />
-                                <input type="number" value={donateDetails.requiredAmt} onChange={handleChange} />
+                                <input type="number" name="supportersCount" value={donateDetails.supportersCount} onChange={handleChange} />
                             </label>
                             <label>
                                 Add metaDescription (Max 155 characters) <br />
-                                <input type="text" value={donateDetails.metaDescription} onChange={handleChange} placeholder="Type the metaDescription for Donation"/>
+                                <input type="text" name="metaDescription" value={donateDetails.metaDescription} onChange={handleChange} placeholder="Type the metaDescription for Donation"/>
                             </label>
                             <label>
                                 Share Preview Description (Max 65 characters) <br />
-                                <input type="text" value={donateDetails.previewDescription} onChange={handleChange} placeholder="Type the share previewImage for Donation"/>
+                                <input type="text" name="previewDescription" value={donateDetails.previewDescription} onChange={handleChange} placeholder="Type the share previewImage for Donation"/>
                             </label>
                             
                             <label>
                                 Share Preview Image (Less than 300KB and dimension of 300 X 300) <br />
-                                <input type="text" value={donateDetails.previewImageSrc} onChange={handleChange} placeholder="Type the share previewImage for Donation"/>
+                                <input type="text" name="previewImageSrc" value={donateDetails.previewImageSrc} onChange={handleChange} placeholder="Type the share previewImage for Donation"/>
                             </label>
                         </div>
         
@@ -280,15 +294,15 @@ function AdminDonate()
                     <div className="donateDetailsInput">
                         <label>
                             Donate Details Image <br />
-                            <input type="text" value={donateDetails.donateDetailImageSrc} onChange={handleChange} placeholder="Type the url of DonateDetails photo"/>
+                            <input type="text" name="donateDetailImageSrc" value={donateDetails.donateDetailImageSrc} onChange={handleChange} placeholder="Type the url of DonateDetails photo"/>
                         </label>
                         <label>
                             Donate Details Image Alternate <br />
-                            <input type="text" value={donateDetails.donateDetailImageAlt} onChange={handleChange} placeholder="Type the DonateDetails photo alternate"/>
+                            <input type="text" name="donateDetailImageAlt" value={donateDetails.donateDetailImageAlt} onChange={handleChange} placeholder="Type the DonateDetails photo alternate"/>
                         </label>
                         <label>
                             About
-                            <TextEditor/>
+                            <TextEditor editorState={editorState} setEditorState={setEditorState}/>
                         </label>
                     </div>
 
