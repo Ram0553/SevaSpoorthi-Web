@@ -28,7 +28,7 @@ async function getDonateDetails(id,setDetails,setMetaTags) {
     if(donateDetailsSnap.exists() && donateSnap.exists())
     {
         details = donateDetailsSnap.val();
-        console.log(details);
+        // console.log(details);
         var donateSummary = donateSnap.val();
         details["raisedAmt"] = donateSummary["raisedAmt"];
         details["requiredAmt"] = donateSummary["requiredAmt"];
@@ -74,7 +74,7 @@ async function getDonateDetails(id,setDetails,setMetaTags) {
 function DonateDetails(props)
 {
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
 
     const [details,setDetails] = useState({
         heading:"",

@@ -36,7 +36,7 @@ function FooterSocialMediaLinks()
     );
 }
 
-function FooterBody()
+function FooterBody({func})
 {
     return (
         <div className="footer-body">
@@ -51,16 +51,16 @@ function FooterBody()
                     <div className='quick-links-inner'>
                         <a href="/"> <p> Home </p> </a>
                         <a href="/AboutUs"> <p> About </p> </a>
-                        <a href=""> <p> Donate </p> </a>
-                        <a href=""> <p> Villages </p> </a>
+                        <a href="/Donate"> <p> Donate </p> </a>
+                        {/* <a href=""> <p> Villages </p> </a> */}
                     </div>
                 </div>
                 <div className="connect">
                     <h3> Connect </h3>
                     <div className='connect-inner'>
-                        <a href=""> <p> News </p> </a>
-                        <a href=""> <p> Programs </p> </a>
-                        <a href=""> <p> Gallery </p> </a>
+                        <a onClick={()=>func("news")}> <p> News </p> </a>
+                        <a onClick={()=>func("programs")}> <p> Programs </p> </a>
+                        <a onClick={()=>func("gallery")}> <p> Gallery </p> </a>
                         <a href=""> <p> Notifications </p> </a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ function FooterBody()
                     <div>
                         <h3> Contact Us </h3>
                         <div className='contact'>
-                            <a href="tel:+919994241399">Call Us!</a>
+                            <a href="tel:+917702775933">Call Us!</a>
                             <a href="mailto:sevaspoorthi.web@gmail.com">Send Email</a>
                         </div>
                     </div>
@@ -88,12 +88,12 @@ function FooterCopyright(props)
     );
 }
 
-function Footer()
+function Footer({func})
 {
     return (
         <div className="footer">
             <FooterSocialMediaLinks/>
-            <FooterBody/>
+            <FooterBody func={func}/>
             <FooterCopyright/>
         </div>
     );

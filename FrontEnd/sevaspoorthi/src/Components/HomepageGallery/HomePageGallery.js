@@ -28,9 +28,9 @@ function open(index,setCurPhoto){
     document.getElementsByClassName("tileview")[0].style.cssText='display:none';
 }
 
-function HomePageGallery(){
+function HomePageGallery({mref}){
     function ViewAll(){
-        navigate('/Gallery/GlobalPhotos/'+photos[0].photoId);
+        navigate('/Gallery/GlobalPhotos/');
     }
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
@@ -47,7 +47,7 @@ function HomePageGallery(){
     },[photos])
     
     return(
-        <div className="gallery">
+        <div className="gallery" ref={mref}>
             <h1>
                 Gallery
             </h1>

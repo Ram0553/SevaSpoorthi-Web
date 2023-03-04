@@ -10,23 +10,18 @@ import Map from "../GoogleMap/Map";
 
 function AboutUs(){
 
-    const [aboutCollapse,setAboutCollapse] = useState(true);
+    const [aboutCollapse,setAboutCollapse] = useState(false);
     const [leadershipCollapse,setLeadershipCollapse] = useState(true);
     const [financialCollapse,setFinancialCollapse] = useState(true);
     const [sponsorCollapse,setSponsorCollapse] = useState(true);
-    const [locationCollapse,setLocationCollapse] = useState(true);
-    const [heading,setHeading] = useState("");
+    const [locationCollapse,setLocationCollapse] = useState(false);
     const [story,setStory] = useState("");
-    const location ={
-        address:"Survey No. 324, Dundigal Village, Gowdavelli-Dundigal Rd, Telangana 500043",
-        lat:17.609780283424158,
-        lng:78.43750181054814
-    };
+    
 
     const handleClick = ((event) =>{
         switch (event.target.getAttribute("name") ) {
             case "about-us":
-                setAboutCollapse(!aboutCollapse);
+                // setAboutCollapse(!aboutCollapse);
                 break;
             case "leadership":
                 setLeadershipCollapse(!leadershipCollapse);
@@ -38,19 +33,18 @@ function AboutUs(){
                 setSponsorCollapse(!sponsorCollapse);
                 break;
             case "location":
-                setLocationCollapse(!locationCollapse);
+                // setLocationCollapse(!locationCollapse);
                 break;
             default:
-                console.log(event.target.name);
                 break;
         }
     });
 
     useEffect(() => {
         get(ref(fireDb,"About/Story")).then((snapshot)=>{
-            setHeading(snapshot.child("Heading").val());
             setStory(snapshot.child("Data").val());
-            setAboutCollapse(false);
+            document.getElementsByClassName("about-inner")[0].innerHTML=snapshot.child("Data").val();
+            // setAboutCollapse(false);
         });
     }, [])
     
@@ -58,27 +52,18 @@ function AboutUs(){
         <div>
             <NavBar/>
             <div className="about-outer">
-                <img src="https://i.pinimg.com/736x/a4/bf/5b/a4bf5b0f579cb3b494cd3fef6c508663--monsoon-the-indians.jpg"/>
+                <img src="https://firebasestorage.googleapis.com/v0/b/sevaspoorthi-web.appspot.com/o/Sevaspoorthi-FrontOffice%2Fsevaspoorthi-front--office.jpeg?alt=media&token=5d15d01c-34f7-41d8-97bb-1ee0b740ca0e"/>
                 <div className="about">
                     <div className="about-us">
                         <h1 onClick={handleClick} name="about-us">About Us{"  "}{<FontAwesomeIcon name="about-us" icon={aboutCollapse==false?faAngleDoubleDown:faAngleDoubleRight} style={{height:"1.5vw"}}/>}</h1>
-                        {aboutCollapse==false?
+                        
                             <>
+                                <div className="about-inner"></div>
                                 <div className="line"/>
-                                {heading}
-                                {story.toString().split('\\n').map(function(item,key){
-                                    return (
-                                        <span key={key}>
-                                            {item}
-                                            <br/>
-                                        </span>
-                                    )
-                                })}
-                                <div className="line"/>
-                            </>:""
-                        }
+                            </>
+                        
                     </div>
-                    <div className="leadership">
+                    {/* <div className="leadership">
                         <h1 onClick={handleClick} name="leadership">Our Leadership{"  "}{<FontAwesomeIcon name="leadership" icon={leadershipCollapse==false?faAngleDoubleDown:faAngleDoubleRight} style={{height:"1.5vw"}}/>}</h1>
                     </div>
                     <div className="financial">
@@ -86,16 +71,14 @@ function AboutUs(){
                     </div>
                     <div className="sponsors">
                         <h1 onClick={handleClick} name="sponsors">Lead Sponsors{"  "}{<FontAwesomeIcon name="sponsors" icon={sponsorCollapse==false?faAngleDoubleDown:faAngleDoubleRight} style={{height:"1.5vw"}}/>}</h1>
-                    </div>
+                    </div> */}
                     <div className="location">
                         <h1 onClick={handleClick} name="location">Location{"  "}{<FontAwesomeIcon name="location" icon={locationCollapse==false?faAngleDoubleDown:faAngleDoubleRight} style={{height:"1.5vw"}}/>}</h1>
-                        {locationCollapse==false?
+                        {
                             <>
-                                <div className="line"/>
                                 <Map/>
                                 <div className="line"/>
                             </>
-                            :""
                         }
 
                     </div>

@@ -1,0 +1,15 @@
+.partners{
+    margin: 10px auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    gap: 4vw 4vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.partners img{
+    width: 30vw;
+    height: 30vw;
+    color: white;
+}

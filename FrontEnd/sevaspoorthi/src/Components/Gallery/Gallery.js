@@ -16,11 +16,11 @@ function Gallery(){
     const [photos,setPhotos] = useState([]);
     const [curPhoto,setCurPhoto]=useState(0);
     const [loading,setLoading] = useState(0);
-    const {path,key} = useParams();
+    const {path} = useParams();
     const nextImg = useRef("");
 
     useEffect(() => {
-        fetchPhotos(setPhotos,key,path);
+        fetchPhotos();
         if(photos.length>0){
             setCurPhoto(0);
         }
@@ -45,7 +45,7 @@ function Gallery(){
     };
 
     function fetchPhotos(){
-        const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(), startAt(key.toString()),limitToFirst(20));
+        const recentPostsRef = query(ref(fireDb, "Photos/"+path),orderByKey(),limitToFirst(20));
         onValue(recentPostsRef,(snapshot)=>{
             if(snapshot.exists()){
                 snapshot.forEach((photo)=>{

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import "./News.css";
 import TextEditor from "../TextEditor/TextEditor";
 
-function News(){
+function News({mref}){
     const [latest, setlatest] = useState([]);
     const [archive, setarchive] = useState([]);
     var allNews=[];
@@ -20,7 +20,7 @@ function News(){
         onValue(recentPostsRef,(snapshot)=>{
             if(snapshot.exists()){
                 snapshot.forEach((news)=>{
-                    var images=[]
+                    var images=[];
                     news.child("images").forEach((img)=>{
                         images.push(img.val());
                     });
@@ -34,10 +34,10 @@ function News(){
                     allNews.push(newsObj);
                 });
                 allNews.reverse();
-                console.log(allNews);
+                // console.log(allNews);
                 var latestNews=[],archiveNews=[];
                 for(var i in allNews){
-                    console.log(allNews[i]["heading"]);
+                    // console.log(allNews[i]["heading"]);
                     if(i<5){
                         latestNews.push(allNews[i]);
                     }
@@ -68,7 +68,7 @@ function News(){
     },[]);
     
     return (
-        <div className="news">
+        <div className="news" ref={mref}>
             <h1>News Section</h1>  
             {/* <TextEditor editorState={editorState} setEditorState={setEditorState}/>           */}
             <div className="news-block">

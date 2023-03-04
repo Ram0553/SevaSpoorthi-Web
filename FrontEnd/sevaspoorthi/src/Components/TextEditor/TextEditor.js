@@ -6,7 +6,7 @@ import { convertToRaw } from 'draft-js';
 function TextEditor({editorState,setEditorState}){
 
     function onEditorStateChange(str){
-        // console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+        console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
         setEditorState(str);
     }
 

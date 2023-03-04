@@ -21,26 +21,31 @@ function Menuitem({currentUser,checkAdmin}){
         url: '/AboutUs',
         
       },
-      {
-        title: 'Villages',
-        submenu: [
-          {
-            title: 'Nodal Officers',
-            url: '',
-          },
-          {
-            title: 'Map',
-            url: '',
-          },
-          {
-            title: 'Donate',
-            url: '/Donate',
-          },
-        ],
-      },
+      // {
+      //   title: 'Villages',
+      //   submenu: [
+      //     {
+      //       title: 'Nodal Officers',
+      //       url: '',
+      //     },
+      //     {
+      //       title: 'Map',
+      //       url: '',
+      //     },
+      //     {
+      //       title: 'Donate',
+      //       url: '/Donate',
+      //     },
+      //   ],
+      // },
       {
         title: 'Donate',
         url: '/Donate',
+        
+      },
+      {
+        title: 'Partners',
+        url: '/Partners',
         
       },
       {
@@ -63,26 +68,31 @@ function Menuitem({currentUser,checkAdmin}){
         url: '/AboutUs',
         
       },
-      {
-        title: 'Villages',
-        submenu: [
-          {
-            title: 'Nodal Officers',
-            url: '',
-          },
-          {
-            title: 'Map',
-            url: '',
-          },
-          {
-            title: 'Donate',
-            url: '',
-          },
-        ],
-      },
+      // {
+      //   title: 'Villages',
+      //   submenu: [
+      //     {
+      //       title: 'Nodal Officers',
+      //       url: '',
+      //     },
+      //     {
+      //       title: 'Map',
+      //       url: '',
+      //     },
+      //     {
+      //       title: 'Donate',
+      //       url: '',
+      //     },
+      //   ],
+      // },
       {
         title: 'Donate',
-        url: '/',
+        url: '/Donate',
+        
+      },
+      {
+        title: 'Partners',
+        url: '/Partners',
         
       },
       {
