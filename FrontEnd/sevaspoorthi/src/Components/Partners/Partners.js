@@ -5,6 +5,7 @@ import React from "react";
 import { get, ref } from "firebase/database";
 import { fireDb } from "../../Config/Firebase";
 import './Partners.css';
+import Card from "../Card/Card";
 
 function Partners(){
     const [partners,setPartners] = useState([]);
@@ -14,9 +15,9 @@ function Partners(){
             var part = [];
             snapshot.forEach(partner => {
                 var obj = {
-                    "name":partner.child("name").val(),
-                    logo:partner.child("logo").val(),
-                    "details":partner.child("details").val(),
+                    caption:partner.child("name").val(),
+                    image:partner.child("logo").val(),
+                    description:partner.child("details").val(),
                 };
                 part.push(obj);  
             });
@@ -24,6 +25,11 @@ function Partners(){
             console.log(part);
         });
     }
+
+    const cardItems = partners.map((card,index) => {
+        return <Card cardItem={card} key={index} />
+    });
+
     useEffect(() => {
       fetchPartners();
     }, [])
@@ -31,14 +37,11 @@ function Partners(){
     return(
         <div >
             <NavBar/>
+            <h2>Our Partners</h2>
             <div className="partners">
-                {partners.map((obj, index) => {
-                    return (
-                        <div>
-                            <img src={obj["logo"]}/>
-                        </div>
-                    )  
-                })}
+                    <div className="partners-deck">
+                        {cardItems}
+                    </div>
             </div>
         </div>
     );

@@ -16,7 +16,7 @@ function CardDeck({mref}){
                     const description=program.child("Description").val();
                     const obj = {image:image,caption:caption,description:description};
                     setCarddeck(programs=>[...programs,obj]);
-                })
+                });
             }
         });
         return;

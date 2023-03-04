@@ -1,15 +1,133 @@
 .partners{
     margin: 10px auto;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2,auto);
-    gap: 4vw 4vw;
-    align-items: center;
-    justify-content: center;
 }
 
+.partners-deck {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw ;
+    grid-gap: 3vw;
+    justify-content: center;
+    margin: 3vw auto;
+    padding-bottom: 5vh;
+}
+/* 
 .partners img{
-    width: 30vw;
-    height: 30vw;
+    width: 20vw;
+    height: 20vw;
     color: white;
+} */
+
+.card {
+    position: relative;
+    border-radius: 2%;
+    overflow: hidden;
+    color: white;
+    cursor: pointer;
+    height: 25vw;
+}
+
+.card:hover .card-description{
+    height: 100%;
+    background-color: #025f56e8;
+}
+
+.card-description {
+    font-size: 1.25vw;
+}
+
+.mini-caption {
+    /* position: relative; */
+    height:18%;
+    width: 90%;
+    background: #025f56;
+    color: white;
+    font-weight: 400;
+    font-size: 1vw;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    overflow: hidden;
+    line-height: 120%;
+    padding: 0px 5%;
+
+}
+
+h2{
+    text-align: center;
+}
+
+@media screen and (max-width:800px) {
+    .partners-deck {
+        display: grid;
+        grid-template-columns: 35vw 35vw ;
+        grid-gap: 3vw;
+        justify-content: center;
+        margin: 3vw auto;
+        padding-bottom: 5vh;
+    }
+    .card {
+        position: relative;
+        border-radius: 2%;
+        overflow: hidden;
+        color: white;
+        cursor: pointer;
+        height: 35vw;
+    }
+    .card-description {
+        font-size: 1.8vw;
+    }
+    .mini-caption {
+        /* position: relative; */
+        height:18%;
+        width: 90%;
+        background: #025f56;
+        color: white;
+        font-weight: 400;
+        font-size: 1.8vw;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        overflow: hidden;
+        line-height: 120%;
+        padding: 0px 5%;
+    
+    }
+}
+
+@media screen and (max-width:450px) {
+    .partners-deck {
+        display: grid;
+        grid-template-columns: 40vw 40vw ;
+        grid-gap: 3vw;
+        justify-content: center;
+        margin: 3vw auto;
+        padding-bottom: 5vh;
+    }
+    .card {
+        position: relative;
+        border-radius: 2%;
+        overflow: hidden;
+        color: white;
+        cursor: pointer;
+        height: 40vw;
+    }
+    .card-description {
+        font-size: 2vw;
+    }
+    .mini-caption {
+        /* position: relative; */
+        height:18%;
+        width: 90%;
+        background: #025f56;
+        color: white;
+        font-weight: 400;
+        font-size: 2vw;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        overflow: hidden;
+        line-height: 120%;
+        padding: 0px 5%;
+    
+    }
 }
