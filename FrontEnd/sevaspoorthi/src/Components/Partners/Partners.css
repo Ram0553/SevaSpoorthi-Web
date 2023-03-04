@@ -65,7 +65,7 @@ h2{
         margin: 3vw auto;
         padding-bottom: 5vh;
     }
-    .partners.card {
+    .partners .card {
         position: relative;
         border-radius: 2%;
         overflow: hidden;
@@ -73,10 +73,10 @@ h2{
         cursor: pointer;
         height: 35vw;
     }
-    .partners.card-description {
+    .partners .card-description {
         font-size: 1.8vw;
     }
-    .partners.mini-caption {
+    .partners .mini-caption {
         /* position: relative; */
         height:18%;
         width: 90%;
@@ -103,7 +103,7 @@ h2{
         margin: 3vw auto;
         padding-bottom: 5vh;
     }
-    .partners.card {
+    .partners .card {
         position: relative;
         border-radius: 2%;
         overflow: hidden;
@@ -111,10 +111,10 @@ h2{
         cursor: pointer;
         height: 40vw;
     }
-    .partners.card-description {
+    .partners .card-description {
         font-size: 2vw;
     }
-    .partners.mini-caption {
+    .partners .mini-caption {
         /* position: relative; */
         height:18%;
         width: 90%;
