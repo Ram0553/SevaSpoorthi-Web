@@ -17,7 +17,7 @@
     color: white;
 } */
 
-.card {
+.partners .card {
     position: relative;
     border-radius: 2%;
     overflow: hidden;
@@ -26,16 +26,16 @@
     height: 25vw;
 }
 
-.card:hover .card-description{
+.partners .card:hover .card-description{
     height: 100%;
     background-color: #025f56e8;
 }
 
-.card-description {
+.partners .card-description {
     font-size: 1.25vw;
 }
 
-.mini-caption {
+.partners .mini-caption {
     /* position: relative; */
     height:18%;
     width: 90%;
@@ -65,7 +65,7 @@ h2{
         margin: 3vw auto;
         padding-bottom: 5vh;
     }
-    .card {
+    .partners.card {
         position: relative;
         border-radius: 2%;
         overflow: hidden;
@@ -73,10 +73,10 @@ h2{
         cursor: pointer;
         height: 35vw;
     }
-    .card-description {
+    .partners.card-description {
         font-size: 1.8vw;
     }
-    .mini-caption {
+    .partners.mini-caption {
         /* position: relative; */
         height:18%;
         width: 90%;
@@ -103,7 +103,7 @@ h2{
         margin: 3vw auto;
         padding-bottom: 5vh;
     }
-    .card {
+    .partners.card {
         position: relative;
         border-radius: 2%;
         overflow: hidden;
@@ -111,10 +111,10 @@ h2{
         cursor: pointer;
         height: 40vw;
     }
-    .card-description {
+    .partners.card-description {
         font-size: 2vw;
     }
-    .mini-caption {
+    .partners.mini-caption {
         /* position: relative; */
         height:18%;
         width: 90%;
