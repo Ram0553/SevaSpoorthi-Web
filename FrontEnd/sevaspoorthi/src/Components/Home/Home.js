@@ -15,7 +15,7 @@ import { EditorState } from 'draft-js';
 import { useRef } from 'react';
 
 function Home() {
-  // const [editorState,setEditorState] = useState(EditorState.createEmpty());
+  const [editorState,setEditorState] = useState(EditorState.createEmpty());
   const newsRef = useRef();
   const programsRef = useRef();
   const galleryRef = useRef();
@@ -42,6 +42,7 @@ function Home() {
         <NavBar/>
         <ScrollNotification/>
         <HomepageCarousel/>
+        <TextEditor editorState={editorState} setEditorState={setEditorState} />
         <Welcome/>
         <News mref={newsRef}/>
         <HomePageGallery mref={galleryRef}/>
