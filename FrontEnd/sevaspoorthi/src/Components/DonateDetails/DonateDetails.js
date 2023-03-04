@@ -123,7 +123,21 @@ function DonateDetails(props)
                     </div>
                     <div className="donateQuickDetails">
                         <div>
-                            <a href={window.location.href}><button className="donateSolidBtn"> Donate Now </button></a>
+                            {/* <a href={window.location.href}><button className="donateSolidBtn"> Donate Now </button></a> */}
+                        </div>
+                        <div>
+                            {/* donation address */}
+                            <h3>Donation Adress</h3>
+                            <h4>US address</h4>
+                            <p>
+                                2068 Quiet Cove
+                                Sanford, FL 32771,
+                                info@sevaspoorthi.org 
+                            </p>
+                            <h4>INDIA Address</h4>
+                            <p> 
+                                8-4-148, Anjireddy nagar colony, Kharmanghat, Hyderabad -500079
+                            </p>
                         </div>
                         <div> 
                             {/* types of payment options available */}
