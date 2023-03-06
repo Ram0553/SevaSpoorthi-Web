@@ -9,12 +9,14 @@ import NewsDetails from './Components/News/NewsDetails';
 import DonateDetails from './Components/DonateDetails/DonateDetails';
 import DonatePage from './Components/DonatePage/DonatePage';
 import Partners from './Components/Partners/Partners';
+import Auth from './Components/Authentication/Auth';
 
 function App() {
   return (
     <BrowserRouter>
       <main>
       <AuthProvider>
+        <Auth/>
         <Routes>
           <Route path="/" exact element={<Home/>} />
           <Route path="/AboutUs" exact element={<AboutUs/>}/>

@@ -38,7 +38,7 @@ function Home() {
     
     <AuthProvider>
       <div>
-        <Auth/>
+        {/* <Auth/> */}
         <NavBar/>
         <ScrollNotification/>
         <HomepageCarousel/>
