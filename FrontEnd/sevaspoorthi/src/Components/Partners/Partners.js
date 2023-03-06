@@ -22,13 +22,13 @@ function Partners(){
                 part.push(obj);  
             });
             setPartners(part);
-            console.log(part);
+            // console.log(part);
         });
     }
 
-    const cardItems = partners.map((card,index) => {
-        return <Card cardItem={card} key={index} />
-    });
+    // const cardItems = partners.map((card,index) => {
+    //     return <Card cardItem={card} key={index} />
+    // });
 
     useEffect(() => {
       fetchPartners();
@@ -38,10 +38,37 @@ function Partners(){
         <div >
             <NavBar/>
             <h2>Our Partners</h2>
-            <div className="partners">
+            {/* <div className="partners">
                     <div className="partners-deck">
                         {cardItems}
                     </div>
+            </div> */}
+            <div style={{"margin-bottom":"12vw"}}>
+                {partners.map((obj,key)=>{
+                    return (
+                        <div>
+                            {key%2==0? 
+                            <div className="partners">
+                                <img className="left" src={obj.image}/>
+                                <div className="right">
+                                    <h3>{obj.caption}</h3>
+                                    <p>{obj.description}</p>
+                                </div>
+                            </div>
+                            :
+                            <div className="partners">
+                                <img className="left" src={obj.image}/>
+                                <div className="right">
+                                    <h3>{obj.caption}</h3>
+                                    <p>{obj.description}</p>
+                                </div>
+                                
+                            </div>
+                            }
+                        </div>
+                    );
+                })
+                }
             </div>
         </div>
     );
