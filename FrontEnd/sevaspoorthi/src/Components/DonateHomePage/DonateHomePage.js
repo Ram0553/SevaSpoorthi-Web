@@ -33,7 +33,7 @@ function DonateHomePage(){
 
     fetch(setDonateUs);
     return (
-        <div className="donate-count">
+        // <div className="donate-count">
             <div className="donateSection">
                 <h1>
                     Donate to Nobel Cause
@@ -46,14 +46,14 @@ function DonateHomePage(){
                         Visit Donate Page
                     </button>
                 </a>
-            </div>
+            {/* </div>
             <div className="line-v"/>
             <div className="usercount">
                 <h1>Total User Visits</h1>
                 <img src={pc}/>
                 <h2 style={{color:"white"}}>{counter}</h2>
-            </div>
-        </div>
+            </div>*/}
+             </div> 
        
     )
 }
