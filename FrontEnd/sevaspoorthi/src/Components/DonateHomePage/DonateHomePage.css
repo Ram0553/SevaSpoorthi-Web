@@ -1,18 +1,43 @@
+.donate-count{
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction: row;
+    background-color: #025f56;
+    color: #F17211;
+}
+
+.donate-count .line-v{
+    display: block;
+    height: 20vw;
+    width: 0.3vw;
+    margin: auto 0px ;
+    background: #F17211;
+}
 .donateSection{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 70vw;
     background-color: #025f56;
     color: #F17211;
 }
-.donateSection h1{
+
+.donate-count .usercount{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    width: 40vw;
+}
+.donate-count h1{
     font-family: californian-fb-text, serif;
     font-weight: 400;
     margin-bottom: 0px;
     font-size: 3vw;
 }
-.donateSection h1:after{
+.donate-count h1:after{
     content: "";
     display: block;
     width: 10vw;
@@ -24,8 +49,8 @@
 
 .donateSection .donateCause{
     display: block;
-    width: 50%;
-    text-align: center;
+    width: 80%;
+    text-align:justify;
     font-size: 1.3vw;
     color: white;
     padding: 2vw;
@@ -44,16 +69,21 @@
     cursor: pointer;
 }
 
+.donate-count .usercount img{
+    height: 7vw;
+    width: 7vw;
+    margin-top: 2.5vw;
+}
 
 @media screen and (max-width:800px) {
-    .donateSection h1{
+    .donate-count h1{
         font-size: 3.5vw;
     }
-    .donateSection h1:after{
+    .donate-count h1:after{
         width: 15vw;
     }
     .donateSection .story{
-        width: 70%;
+        width: 80%;
         font-size: 2vw;
     }  
     .donateSection button{
@@ -61,23 +91,47 @@
         font-size: 2vw;
         padding: 1.5vw;
     }
+    .donate-count .line-v{
+        display: block;
+        height: 25vw;
+        width: 0.3vw;
+        margin: auto 0px ;
+        background: #F17211;
+    }
+    .donate-count .usercount img{
+        height: 10vw;
+        width: 10vw;
+        margin-top: 3vw;
+    }
 }
 
 @media screen and (max-width:500px) {
-    .donateSection h1{
+    .donate-count h1{
         font-size: 4vw;
     }
-    .donateSection h1:after{
+    .donate-count h1:after{
         width: 15vw;
     }
     .donateSection .donateCause{
-        width: 70%;
+        width: 80%;
         font-size: 2.5vw;
     }  
     .donateSection button{
         border-width: 1.5px;
         font-size: 2.5vw;
         padding: 2vw;
+    }
+    .donate-count .line-v{
+        display: block;
+        height: 40vw;
+        width: 0.3vw;
+        margin: auto 0px ;
+        background: #F17211;
+    }
+    .donate-count .usercount img{
+        height: 15vw;
+        width: 15vw;
+        margin-top: 7vw;
     }
 }
 
