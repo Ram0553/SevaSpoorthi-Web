@@ -13,7 +13,6 @@ function NewsDetails(){
     
     function download(){
         var images = location.state.news["images"];
-        console.log(images.length);
         for(var i = 0; i<images.length; i++){
             saveAs(images[i],"image"+i.toString()+".jpg");
         }
