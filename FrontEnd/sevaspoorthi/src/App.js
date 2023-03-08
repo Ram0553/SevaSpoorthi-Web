@@ -8,20 +8,24 @@ import AboutUs from './Components/AboutUs/AboutUs';
 import NewsDetails from './Components/News/NewsDetails';
 import DonateDetails from './Components/DonateDetails/DonateDetails';
 import DonatePage from './Components/DonatePage/DonatePage';
+import Partners from './Components/Partners/Partners';
+import Auth from './Components/Authentication/Auth';
 
 function App() {
   return (
     <BrowserRouter>
       <main>
       <AuthProvider>
+        <Auth/>
         <Routes>
           <Route path="/" exact element={<Home/>} />
           <Route path="/AboutUs" exact element={<AboutUs/>}/>
           <Route path="/AdminPortal" exact element={<AdminPortal/>} />
-          <Route path="/Gallery/:path/:key" exact element={<Gallery/>} />
+          <Route path="/Gallery/:path" exact element={<Gallery/>} />
           <Route path="/NewsDetails" exact element={<NewsDetails/>}/>
           <Route path="/Donate" exact element={<DonatePage/>}/>
           <Route path="/Donate/:id" exact element={<DonateDetails/>}/>
+          <Route path="/Partners" exact element={<Partners/>}/>
         </Routes>
         </AuthProvider>
       </main>

@@ -3,6 +3,25 @@
     border-radius: 8px;
     margin: 15px 10%;
 }
+.donateDetails p{
+    background-color:  rgb(237, 237, 248);;
+    text-align: left;
+}
+
+.donateDetails strong{
+    text-align: left;
+    background-color:  rgb(237, 237, 248);;
+}
+
+.donateDetails span{
+    text-align: left;
+    background-color:  rgb(237, 237, 248);;
+}
+
+.donateDetails li{
+    text-align: left;
+    background-color:  rgb(237, 237, 248);;
+}
 
 .donateDetailsHeading {
     text-align: center;

@@ -80,6 +80,10 @@
     margin: 0px;
 }
 
+.footer-body a:hover{
+    cursor: pointer;
+}
+
 .footer-body p{
     margin: 0.7vw 0.5vw;
     width: 100%;

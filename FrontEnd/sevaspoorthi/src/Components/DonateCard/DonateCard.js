@@ -13,7 +13,7 @@ function DonateCard(props)
     let currAddress = window.location.href;
     if(currAddress[currAddress.length - 1]!== '/'){currAddress = currAddress + "/";}
     return (
-        <a href={"/Donate/" + props.details.id.toString()} style={{textDecoration:"none",color:"black"}} className="linkDonateCard">
+        <a href={"/Donate/" + props.details.id.toString()} style={{display:"flex",justifyContent:"center", textDecoration:"none",color:"black",margin:"0px"}} className="linkDonateCard">
             <div className="donateCard" id={props.details.id}>
                 <div className="donateCardHeader">
                     <img src={props.details.imageSrc} alt={props.details.imageAlt} />

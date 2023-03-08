@@ -5,7 +5,7 @@ import { fireDb } from '../../Config/Firebase';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-function CardDeck(){
+function CardDeck({mref}){
 
     const fetchDeck = () =>{
         get(child(ref(fireDb),"Photos/OurPrograms")).then((snapshot)=>{
@@ -16,7 +16,7 @@ function CardDeck(){
                     const description=program.child("Description").val();
                     const obj = {image:image,caption:caption,description:description};
                     setCarddeck(programs=>[...programs,obj]);
-                })
+                });
             }
         });
         return;
@@ -33,7 +33,7 @@ function CardDeck(){
     });
 
     return (
-        <div className='programs'>
+        <div className='programs' ref={mref}>
             <h1>
                 Our Programs
             </h1>
