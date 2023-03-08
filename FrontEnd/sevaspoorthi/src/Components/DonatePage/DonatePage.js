@@ -5,6 +5,7 @@ import { ref,get } from "firebase/database";
 import { useEffect, useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import Carousel from '../Carousel/Carousel';
+import WebFont from 'webfontloader';
 
 // async function getDonateCards(setDonateCards)
 // {
@@ -43,6 +44,11 @@ function DonatePage()
     useEffect(() => {
         // getDonateCards(setDonateCards);
         getDonate();
+        WebFont.load({
+            google: {
+              families: ['Comic Sans MS']
+            }
+        });
 
     },[]);
     
