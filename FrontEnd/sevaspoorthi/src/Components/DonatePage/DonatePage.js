@@ -36,7 +36,7 @@ function DonatePage()
         get(donateRef).then((snapshot)=>{
             if(snapshot.exists()) {
                 document.getElementsByClassName("donate")[0].innerHTML=snapshot.val();
-                console.log(snapshot.val());
+                // console.log(snapshot.val());
             }
         });
     }
